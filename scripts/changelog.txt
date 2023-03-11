@@ -1,0 +1,77 @@
+Changelog, covering major changes:
+
+-------------------------------
+1.15
+	Mecha Ronin
+	v0.15
+		Fixed a bug introduced in ItB 1.2.87 with the Pursuit Drone not pushing marked targets.
+	Mercurials
+	v0.03
+		Buffed Alloy Mech's Ablative Spines to deal 2 base damage.
+	All squads
+		Adjusted secret achievements to show fewer popups when earned.
+
+1.14
+	Cauldron Pilots
+	v1.33
+		Pilot Gray can no longer get the Technician skill.
+		Pilot Schraeder can no longer get the Thick Skin skill.
+	Paradox Core
+	v0.10
+		Updated Temporal Tear tip to used new Queued option.
+	Iron Legion
+	v0.15
+		Updated Seismic Wave tip to used new Queued option.
+	Zero Dawn
+	v0.22
+		Fix a nuisance warning with secret pilot.
+	Mercurials
+	v0.02
+		Fix a bug with the Soulless Army achievement.
+		
+1.13
+	Hydro Leviathans
+	v0.22
+		Fixed a potential crash when killing the hacking bot, and made the code more compatible with other mods that might override the UpdateMission function as well.
+
+1.12
+	General updates
+		Updated modpack to work with modloader 2.8.2 and ItB 1.2.86
+		All mods with modApiExt now use the modloader modApiExt extension, instead of carrying along their own copy of the library
+		All mods that add structures now use the modloader easyEdit extension to do so
+	Cauldron Pilots
+	v1.32
+		Reworked Amelia Espada's skill to use memedit and be more unique
+	Mercurials
+	v0.1
+		Added a new squad
+
+1.11
+	Island Missions 
+	v0.17
+		Fixed Nanoswarm mission to properly exclude certain enemies from spawning.
+	Cauldron Pilots
+	v1.31
+		Updated pawnMoveSkill lib to v1.3.
+
+1.10
+	Updated to modApiExt v1.15 for all mods; Cauldron Pilots and Zero Dawn 2-click skillbuild hooks updated to use the new version hooks.
+
+1.09
+	Island Missions 
+	v0.16
+		Custom dialog popups should now work properly for AE pilots.
+
+1.08
+	Zero Dawn
+	v0.20
+		Fixed a bug with secret pilot skill (introduced when adding 2-click compatibility) that prevented it from working on one-click weapons.
+		Made pilot personality code slightly more robust to prevent errors on new profiles with few pilots unlocked.
+	Hydro Leviathans
+	v0.20
+		Fixed a recently introduced bug that prevented secret structure from appearing once unlocked.
+	Island Missions 
+	v0.15
+		Made pilot personality code (used for mission barks) slightly more robust to prevent errors on new profiles with few pilots unlocked.
+		Removed AE barks for now, as I discovered they're coded differently and weren't actually working.
+-------------------------------

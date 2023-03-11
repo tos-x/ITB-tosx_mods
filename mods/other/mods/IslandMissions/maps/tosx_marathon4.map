@@ -1,0 +1,44 @@
+tosx_marathon4 = {["version"] = 7, ["dimensions"] = Point( 8, 8 ), ["name"] = "tosx_marathon4", 
+["map"] = {
+	{["loc"] = Point( 0, 0 ), ["terrain"] = 3, ["poison"] = 1, },
+	{["loc"] = Point( 0, 1 ), ["terrain"] = 3, ["poison"] = 1, },
+	{["loc"] = Point( 0, 2 ), ["terrain"] = 3, ["poison"] = 1, },
+	{["loc"] = Point( 0, 5 ), ["terrain"] = 4, },
+	{["loc"] = Point( 0, 6 ), ["terrain"] = 4, },
+	{["loc"] = Point( 0, 7 ), ["terrain"] = 3, ["poison"] = 1, },
+
+	{["loc"] = Point( 1, 1 ), ["terrain"] = 3, ["poison"] = 1, },
+	{["loc"] = Point( 1, 5 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
+	{["loc"] = Point( 1, 6 ), ["terrain"] = 4, },
+	{["loc"] = Point( 1, 7 ), ["terrain"] = 3, ["poison"] = 1, },
+
+	{["loc"] = Point( 2, 2 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
+	{["loc"] = Point( 2, 5 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
+	{["loc"] = Point( 2, 7 ), ["terrain"] = 3, ["poison"] = 1, },
+
+	{["loc"] = Point( 3, 0 ), ["terrain"] = 3, ["poison"] = 1, },
+	{["loc"] = Point( 3, 4 ), ["terrain"] = 3, ["poison"] = 1, },
+
+	{["loc"] = Point( 4, 2 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
+
+	{["loc"] = Point( 5, 2 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
+	{["loc"] = Point( 5, 5 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
+	{["loc"] = Point( 5, 6 ), ["terrain"] = 4, },
+	{["loc"] = Point( 5, 7 ), ["terrain"] = 3, ["poison"] = 1, },
+
+	{["loc"] = Point( 6, 5 ), ["terrain"] = 4, },
+	{["loc"] = Point( 6, 6 ), ["terrain"] = 4, },
+	{["loc"] = Point( 6, 7 ), ["terrain"] = 3, ["poison"] = 1, },
+
+	{["loc"] = Point( 7, 2 ), ["terrain"] = 3, ["poison"] = 1, },
+	{["loc"] = Point( 7, 6 ), ["terrain"] = 3, ["poison"] = 1, },
+	{["loc"] = Point( 7, 7 ), ["terrain"] = 3, ["poison"] = 1, },
+},
+["spawns"] = {},
+["spawn_ids"] = {},
+["spawn_points"] = {},
+["zones"] = {
+["tosx_marathon_zone"] = {Point( 3, 3 ), Point( 3, 4 ), Point( 4, 3 ), Point( 4, 4 ), Point( 5, 3 ), Point( 5, 4 ),},
+},
+["tags"] = {"tosx_marathon", "any_sector", },
+}
