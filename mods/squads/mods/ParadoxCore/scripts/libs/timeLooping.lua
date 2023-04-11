@@ -166,7 +166,7 @@ function AnimateLoopUnit(id)
 	if false then return end
 	local mission = GetCurrentMission()
 	local desc = "loopanimtest"
-	customAnim:Add(mission, id, "tosx_loop_icon1a", desc)
+	customAnim:add(id, "tosx_loop_icon1a", desc)
 	if not (IsTipImage() or IsTestMechScenario()) then
 		tips:Trigger("ExplainPastUnits", Board:GetPawnSpace(id))
 	end
@@ -550,7 +550,7 @@ local function ShowLoopParent(screen)
 				--LOG("Selected someone new")
 				selected_id = sid
 				if parent_id > -1 then
-					customAnim:Rem(mission, parent_id, "tosx_loop_icon0a")
+					customAnim:rem(parent_id, "tosx_loop_icon0a")
 					parent_id = -1
 				end
 			end
@@ -559,7 +559,7 @@ local function ShowLoopParent(screen)
 		--LOG("Deselecting")
 		selected_id = -1
 		if parent_id > -1 then
-			customAnim:Rem(mission, parent_id, "tosx_loop_icon0a")
+			customAnim:rem(parent_id, "tosx_loop_icon0a")
 			parent_id = -1
 		end
 	end
@@ -572,7 +572,7 @@ local function ShowLoopParent(screen)
 						local pawn1 = Board:GetPawn(GAME.tosx_LooperSummons[sid])
 						if pawn1 then
 							parent_id = GAME.tosx_LooperSummons[sid]
-							customAnim:Add(mission, parent_id, "tosx_loop_icon0a", desc)
+							customAnim:add(parent_id, "tosx_loop_icon0a", desc)
 						end
 					end
 				end

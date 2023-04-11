@@ -21,10 +21,10 @@ end
 local function AnimateFallout(id, flag)
 	local mission = GetCurrentMission()
 	if flag then
-		customAnim:Add(mission, id, "PilotGrayFlameL")
+		customAnim:add(id, "PilotGrayFlameL")
 		mission.tosx_GrayCritical = true
 	else
-		customAnim:Rem(mission, id, "PilotGrayFlameL")
+		customAnim:rem(id, "PilotGrayFlameL")
 		mission.tosx_GrayCritical = nil
 	end
 end

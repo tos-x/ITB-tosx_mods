@@ -169,7 +169,7 @@ function this:init(mod)
 						if id == GAME.AloyFocus[id] then
 							Board:AddBurst(Board:GetPawnSpace(id), "Emitter_Pilot_Aloy", DIR_NONE)
 							stagedanims[#stagedanims + 1] = Board:GetPawnSpace(id)
-							customAnim:Add(mission, Board:GetPawnSpace(id), "gaia_focus", desc)
+							customAnim:add(Board:GetPawnSpace(id), "gaia_focus", desc)
 						end
 					end
 				end
@@ -180,7 +180,7 @@ function this:init(mod)
 			
 			for i = 1, #stagedanims do
 				local id = stagedanims[i]
-				customAnim:Rem(mission, id, "gaia_focus")
+				customAnim:rem(id, "gaia_focus")
 			end
 			animstart = false
 			stagedanims = {}
