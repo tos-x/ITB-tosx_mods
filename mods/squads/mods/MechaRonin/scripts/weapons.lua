@@ -360,9 +360,9 @@ function Ronin_Brute_Pursuit:GetSkillEffect(p1,p2)
 	-- Mark the new target
 	if GAME and not IsTipImage() then
 		local colorid = Pawn:GetId() + 1
-		_G["Ronin_DroneZ"].ImageOffset = GameData.current.colors[colorid]
-		_G["Ronin_Drone" .. direction].ImageOffset = GameData.current.colors[colorid]
-		_G["Ronin_Drone_B" .. direction].ImageOffset = GameData.current.colors[colorid]
+		_G["Ronin_DroneZ"].ImageOffset = Pawn:GetImageOffset()
+		_G["Ronin_Drone" .. direction].ImageOffset = Pawn:GetImageOffset()
+		_G["Ronin_Drone_B" .. direction].ImageOffset = Pawn:GetImageOffset()
 	
 	
 		if Board:IsPawnSpace(p2) then

@@ -100,11 +100,14 @@ end
 return {
 	id = "tosx_MechaRonin",
 	name = "Mecha Ronin",
-	version = "0.15",
+	version = "0.16",
 	modApiVersion = "2.8.2",
 	icon = "img/icons/mod_icon.png",
 	description = description,
 	init = init,
 	load = load,
-	dependencies = { easyEdit = "2.0.2" },
+    dependencies = {
+        memedit = "1.0.2",
+        easyEdit = "2.0.2",
+    },
 }

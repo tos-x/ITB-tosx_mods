@@ -92,7 +92,7 @@ end
 return {
 	id = "tosx_IronLegion",
 	name = "Iron Legion",
-	version = "0.16",
+	version = "0.17",
 	modApiVersion = "2.8.2",
 	icon = "img/icons/mod_icon.png",
 	description = description,
@@ -100,6 +100,7 @@ return {
 	load = load,
     dependencies = {
 		modApiExt = "1.2",
+        memedit = "1.0.2",
 		easyEdit = "2.0.2",
 	},
 }

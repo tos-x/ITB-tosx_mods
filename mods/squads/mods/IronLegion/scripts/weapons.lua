@@ -101,7 +101,7 @@ function tosx_DeploySkill_Fighter:GetSkillEffect(p1,p2)
 	local offset0 = _G[self.Deployed].ImageOffset
 	local colorid = Pawn:GetId() + 1
 	if GAME and not IsTipImage() then
-		ret:AddScript(self.Deployed..".ImageOffset = GameData.current.colors["..colorid.."]")
+		ret:AddScript(self.Deployed..".ImageOffset = Board:GetPawn("..colorid.."):GetImageOffset()")
 	end
 	
 	local damage = SpaceDamage(p2, 0)
