@@ -31,7 +31,7 @@ function tosx_hydrosquad_Chievo(id)
 end
 
 function tosx_triggerThirsty(element)
-	if GAME.squadTitles["TipTitle_"..GameData.ach_info.squad] ~= "Hydro Leviathans" then return end
+	if GAME.additionalSquadData.squad ~= modid then return end
 	if element == "acid" then
 		if not modApi.achievements:isProgress(modid,"tosx_hydro_thirsty", { acid = true,} ) then
 			modApi.achievements:trigger(modid,"tosx_hydro_thirsty", {progress = 1})

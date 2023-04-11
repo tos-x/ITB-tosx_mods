@@ -107,7 +107,7 @@ end
 return {
 	id = "tosx_HydroLeviathans",
 	name = "Hydro Leviathans",
-	version = "0.23",
+	version = "0.24",
 	modApiVersion = "2.8.2",
 	icon = "img/icons/mod_icon.png",
 	description = description,
