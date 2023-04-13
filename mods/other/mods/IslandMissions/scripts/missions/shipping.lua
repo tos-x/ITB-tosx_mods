@@ -206,9 +206,12 @@ end
 tosx_battleship_swim_skill = {}
 
 local function isValidTile(p, moved)
-    return not Board:IsBlocked(p, PATH_PROJECTILE) and
-	Board:IsTerrain(p, TERRAIN_WATER) and 
-	moved < 4
+	local blocked = Board:IsBlocked(p, PATH_PROJECTILE)
+	if blocked and Board:IsPawnSpace(p) and Board:GetPawn(p):GetTeam() == TEAM_PLAYER then
+		blocked = false
+	end	
+	
+    return not blocked and Board:IsTerrain(p, TERRAIN_WATER) and  moved < 4
 end
 
 function tosx_battleship_swim_skill:GetTargetArea(p1)
@@ -217,7 +220,9 @@ function tosx_battleship_swim_skill:GetTargetArea(p1)
     local traversable = astar.GetTraversable(p1, isValidTile)
     
     for _, node in pairs(traversable) do
-        ret:push_back(node.loc)
+		if not Board:IsBlocked(node.loc, PATH_PROJECTILE) then
+			ret:push_back(node.loc)
+		end
     end
     
     return ret
