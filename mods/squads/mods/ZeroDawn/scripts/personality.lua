@@ -202,4 +202,33 @@ return {
 		"All those energy shields just... disappeared.",
 		"Taking out that device has deactivated all the shields.",
 	},
+	
+	-- Watchtower
+	Mission_tosx_Sonic_Destroyed = {
+		"The tower is gone.",
+		"So much for that scrambler tower.",
+	},
+	Mission_tosx_Tanker_Destroyed = {
+		"Our tanker friend didn't make it.",
+		"That machine just went down.",
+	},
+	Mission_tosx_Rig_Destroyed = {
+		"Our little friend didn't make it.",
+		"That machine just went down.",
+	},
+	Mission_tosx_GuidedKill = {
+		"Impressive aim.",
+	},
+	Mission_tosx_NuclearSpread = {
+		"That looks dangerous. Better stay clear.",
+	},
+	Mission_tosx_RaceReminder = {
+		"So these people race for sport? I like the sound of that. But I guess today I have to ruin their fun.",
+	},
+	Mission_tosx_MercsPaid = {
+		"Those traders got what they wanted; in return they're going to help us fight.",
+	},
+	Mission_tosx_RigUpgraded = {
+		"I see. They're scavenging components from those dead machines, to improve their own.",
+	},
 }
