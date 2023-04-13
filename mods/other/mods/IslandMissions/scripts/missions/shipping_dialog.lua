@@ -11,8 +11,13 @@ return {
 		Success = {
 			"With the ice floes cleared, that ship can support operations all over Archive.",
 		},
-		Partial = {
+		StillIce = {
 			"I appreciate your efforts, but this is not the outcome I was hoping for.",
+			"I'm glad to see that old battleship still intact. But with that floating ice, we won't be able to deploy it effectively.",
+		},
+		NoShip = {
+			"I appreciate your efforts, but this is not the outcome I was hoping for.",
+			"The loss of that old battleship will leave our coasts unprotected. At least we can use these waterways for moving supplies once more.",
 		}
 	},
 }

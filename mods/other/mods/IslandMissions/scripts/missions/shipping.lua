@@ -109,12 +109,15 @@ function Mission_tosx_Shipping:GetCompletedObjectives()
 end
 
 function Mission_tosx_Shipping:GetCompletedStatus()
+	local icetiles = self:GetTerrainList(TERRAIN_ICE)
 	if countAlive(self.Criticals) > 0 and #icetiles == 0 then
 		return "Success"
-	elseif countAlive(self.Criticals) == 0 and #icetiles > 0 then
-		return "Failure"
+	elseif countAlive(self.Criticals) > 0 and #icetiles > 0 then
+		return "StillIce"
+	elseif countAlive(self.Criticals) == 0 and #icetiles == 0 then
+		return "NoShip"
 	else
-		return "Partial"
+		return "Failure"
 	end
 end
 
