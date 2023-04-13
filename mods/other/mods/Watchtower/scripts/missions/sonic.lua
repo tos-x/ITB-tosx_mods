@@ -29,6 +29,7 @@ Mission_tosx_Sonic = Mission_Infinite:new{
 	MineCount = 8, 
 	SonicId = -1,
 	SpawnMod = 1,
+	SpawnStartMod = 1,
 }
 
 -- Add CEO dialog
@@ -137,6 +138,7 @@ function tosx_Sonic_Weapon:GetSkillEffect(p1, p2)
 	ret:AddDelay(0.25)
 	
 	sonic0.loc = p2
+	sonic0.bHide = true
 	sonic0.sAnimation = "tosx_NavRing2"
 	ret:AddDamage(sonic0)
 	
