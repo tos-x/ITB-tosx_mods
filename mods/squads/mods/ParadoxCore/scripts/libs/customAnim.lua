@@ -1,5 +1,5 @@
 
-local VERSION = "1.0.0"
+local VERSION = "1.0.2"
 local PREFIX = "_custom_anim_%s_"
 local PREFIX_ANIM = string.format(PREFIX, "1")
 local EVENTS = {
@@ -30,11 +30,9 @@ local function list_find(list, key, value)
 end
 
 local function create_new_entry(animId, suffix, desc)
-	local anim = ANIMS[animId]
 	return {
 		id = animId..suffix,
 		animId = animId,
-		anim = anim,
 		time_start = os.clock(),
 		title = desc and desc[1] or nil,
 		desc = desc and desc[2] or nil,
@@ -92,6 +90,7 @@ local function rem(self, loc, animId, suffix)
 	suffix = suffix or ""
 
 	if type(loc) == 'number' then
+		local pawnId = loc
 		mission.lmn_pawnAnims = mission.lmn_pawnAnims or {}
 		mission.lmn_pawnAnims[pawnId] = mission.lmn_pawnAnims[pawnId] or {}
 
@@ -128,6 +127,7 @@ local function get(self, loc, animId, suffix)
 	suffix = suffix or ""
 
 	if type(loc) == 'number' then
+		local pawnId = loc
 		mission.lmn_pawnAnims = mission.lmn_pawnAnims or {}
 		mission.lmn_pawnAnims[pawnId] = mission.lmn_pawnAnims[pawnId] or {}
 
