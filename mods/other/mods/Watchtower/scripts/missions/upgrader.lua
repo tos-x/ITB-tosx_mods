@@ -186,7 +186,7 @@ AddPawn("tosx_Rig0")
 
 tosx_Rig1 = {
 	Name = "War Rig Mk.I",
-	Health = 2,
+	Health = 1,
 	MoveSpeed = 3,
 	Neutral = false,
 	Image = "tosx_rig1",
@@ -200,8 +200,7 @@ AddPawn("tosx_Rig1")
 
 tosx_Rig2 = tosx_Rig1:new{
 	Name = "War Rig Mk.II",
-	--Armor = true,
-	Health = 3,
+	Health = 2,
 	Image = "tosx_rig2",
 	SkillList = { "tosx_Rig2_Weapon" ,  "tosx_Rig_Upgrade" },
 }
@@ -209,7 +208,7 @@ tosx_Rig2 = tosx_Rig1:new{
 tosx_Rig3 = tosx_Rig2:new{
 	Name = "War Rig Mk.III",
 	Armored = true,
-	Health = 4,
+	Health = 3,
 	Image = "tosx_rig3",
 	SkillList = { "tosx_Rig3_Weapon" },
 }
@@ -295,7 +294,7 @@ tosx_Rig2_Weapon = tosx_Rig1_Weapon:new{
 
 tosx_Rig3_Weapon = tosx_Rig2_Weapon:new{
 	Name = "Superior Engines",
-	Damage = 3,
+	Damage = 2,
 	Anim = "explopush2_",
 	TipImage = {
 		Unit = Point(2,3),

@@ -91,7 +91,7 @@ a.tosx_drain_anim_acid = a.tosx_drain_anim:new{
 
 tosx_Tanker1 = {
 	Name = "Water Tanker",
-	Health = 4,
+	Health = 2,
 	MoveSpeed = 5,
 	Neutral = false,
 	IgnoreFire = true,
