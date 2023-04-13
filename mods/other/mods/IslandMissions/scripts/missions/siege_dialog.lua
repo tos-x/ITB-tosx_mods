@@ -32,7 +32,7 @@ return {
 	
 	CEO_Grass = {
 		Briefing = {
-			"It seems one of our isolated urban sectors has detected a huge wave of approaching Vek. Fortunately, there are several old war machines in storage nearby; you ight be able to reactivate them.",
+			"It seems one of our isolated urban sectors has detected a huge wave of approaching Vek. Fortunately, there are several old war machines in storage nearby; you might be able to reactivate them.",
 		},
 		Failure = {
 			"I'm sure you did the best you could; I just wish those old war machines could have been put to better use.",

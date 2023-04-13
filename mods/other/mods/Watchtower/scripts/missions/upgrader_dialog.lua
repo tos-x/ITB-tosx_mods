@@ -10,7 +10,7 @@ return {
 			"It seems scavenging these old wrecks is a viable pursuit. Would that you had saved my War Rig as proof.",
 		},
 		Weak = {
-			"In its current conditin, this War Rig cannot hope to defend the island against the Vek.",
+			"In its current condition, this War Rig cannot hope to defend the island against the Vek.",
 			"That War Rig still requires extensive work, before it will pose a threat to the Vek.",
 		},
 		Failure = {

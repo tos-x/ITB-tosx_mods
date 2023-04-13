@@ -130,7 +130,7 @@ return {
 			"Here they come. Let's do this!",
 		},
 		Mission_tosx_Plague_Spread = {
-			"Woah, I didn't sign up for any strange, deadly diseases.",
+			"Whoa, I didn't sign up for any strange, deadly diseases.",
 		},
 	},
 	

@@ -1,5 +1,5 @@
-
-return {
+--!!!
+return { 
 	CEO_Watchtower = {
 		Briefing = {
 			"bonus rocks brief",

@@ -101,6 +101,14 @@ function Mission_tosx_Trading:GetCompletedObjectives()
 	return ret
 end
 
+function Mission_tosx_Trading:GetCompletedStatus()
+	if self:IsRigAlive() > 0 and self.Stock >= 4 then
+		return "Success"
+	else
+		return "Failure"
+	end
+end
+
 
 
 
@@ -207,7 +215,7 @@ end
 tosx_Ore_Mine = {
 	Image = "combat/tosx_ore_mine.png",
 	Damage = SpaceDamage(0),
-	Tooltip = "tosx_boost_mine",
+	Tooltip = "tosx_ore_mine",
 	Icon = "",
 	UsedImage = ""
 	}
@@ -266,4 +274,4 @@ end
 	
 modApi.events.onModsLoaded:subscribe(onModsLoaded)
 
-TILE_TOOLTIPS[tosx_Boost_Mine.Tooltip] = {"Mineral Cache", "Any Mech that steps on this space will collect a cache of valuable Minerals."}
+TILE_TOOLTIPS[tosx_Ore_Mine.Tooltip] = {"Mineral Cache", "Any Mech that steps on this space will collect a cache of valuable Minerals."}

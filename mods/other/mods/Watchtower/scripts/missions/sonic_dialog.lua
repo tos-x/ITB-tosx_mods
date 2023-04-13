@@ -2,7 +2,7 @@
 return {
 	CEO_Watchtower = {
 		Briefing = {
-			"My engineers couldn't get this Disruptor working during the initial Vek onslaught; now we have another change to test its design.",
+			"My engineers couldn't get this Disruptor working during the initial Vek onslaught; now we have another chance to test its design.",
 			"This Disruptor was abandoned years ago. My people have finally gained enough of a foothold in this sector to get it working. Use it against the Vek.",
 		},
 		Failure = {

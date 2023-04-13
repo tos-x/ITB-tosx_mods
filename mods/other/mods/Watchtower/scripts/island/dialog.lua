@@ -282,6 +282,39 @@ return {
 		"You failed to achieve the requested kill count. Vek stragglers continue to plague this region.",
 		"Perhaps I should clarify what I mean when I use the words 'extreme prejudice'.",
 	},
+
+	-- Vek eggs
+	Mission_Debris_Briefing = {
+		"We have enough Vek running around on my island without allowing their eggs to hatch and bolster their numbers. See to it, commander.",
+	},
+	Mission_Debris_Failure = {
+		"I have several reports in front of me detailing exactly how you failed to deal with those Vek eggs. Several additional reports are overdue, because some of my scouts were killed by the newly hatched Vek.",
+	},
+	Mission_Debris_Success = {
+		"The Vek are much easier to deal with before they hatch, are they not?",
+	},
+
+	-- Vek mites
+	Mission_SelfDamage_Briefing = {
+		"Vek Mites have been detected in this region. They cannot be allowed to spread; who knows what other hardware they might infest. Clear your Mechs before returning from the mission.",
+	},
+	Mission_SelfDamage_Failure = {
+		"I see you broke quarantine and allowed the Vek Mites into our engineering facilities. We're already getting reports of malfunctions and destroyed equipment.",
+	},
+	Mission_SelfDamage_Success = {
+		"Zero remaining Vek Mite signatures detected. Very effective, commander.",
+	},
+
+	-- Pacifist
+	Mission_Pacifist_Briefing = {
+		"My research team is trying to develop new munitions that will better penetrate Vek exoskeletons. For their efforts, we'll need live specimens, so limit your kills during this mission.",
+	},
+	Mission_Pacifist_Failure = {
+		"My scavengers were unable to recover enough live specimens for the munitions project. This is unacceptable.",
+	},
+	Mission_Pacifist_Success = {
+		"Excellent. We've trapped several of the Vek you left alive and will begin live fire tests with them shortly.",
+	},
 	
 	-- Block x spawns
 	Mission_Block_Briefing = {
