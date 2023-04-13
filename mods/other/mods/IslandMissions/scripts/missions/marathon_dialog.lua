@@ -6,6 +6,7 @@ return {
 		},
 		Failure = {
 			"With these chaotic portals opening, the Vek will be harder than ever to defend against.",
+			"You did what you could; I know conditions out there were challenging.",
 		},
 		Success = {
 			"Well done; with the Vek cleared out we can get our science team on site to deal with things permanently.",

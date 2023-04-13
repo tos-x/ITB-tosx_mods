@@ -2,7 +2,8 @@
 
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local this = {id = "Mission_tosx_Locusts"}
-local corpMissions = require(path .."corpMissions")
+--local corpMissions = require(path .."corpMissions")
+local corpIslandMissions = require(path .."corpIslandMissions")
 
 Mission_tosx_Locusts = Mission_Infinite:new{
 	Name = "Nanoswarm",
@@ -245,7 +246,8 @@ function this:init(mod)
 end
 
 function this:load(mod, options, version)
-	corpMissions.Add_Missions_High("Mission_tosx_Locusts", "Corp_Snow")
+	-- corpMissions.Add_Missions_High("Mission_tosx_Locusts", "Corp_Snow")
+	corpIslandMissions.Add_Missions_High("Mission_tosx_Locusts", "pinnacle")
 end
 
 return this

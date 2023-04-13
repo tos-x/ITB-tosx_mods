@@ -2,7 +2,8 @@
 
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local this = {id = "Mission_tosx_Juggernaut"}
-local corpMissions = require(path .."corpMissions")
+--local corpMissions = require(path .."corpMissions")
+local corpIslandMissions = require(path .."corpIslandMissions")
 
 -- returns number of pawns alive
 -- in a list of pawn id's.
@@ -78,6 +79,16 @@ function Mission_tosx_Juggernaut:GetCompletedObjectives()
 	end
 	
 	return ret
+end
+
+function Mission_tosx_Juggernaut:GetCompletedStatus()
+	if countAlive(self.Criticals) > 0 and countAlive(self.Criticals2) == 0 then
+		return "Success"
+	elseif countAlive(self.Criticals) == 0 and countAlive(self.Criticals2) > 0 then
+		return "Failure"
+	else
+		return "Partial"
+	end
 end
 
 tosx_mission_IceHulk = Pawn:new{
@@ -243,7 +254,8 @@ function this:init(mod)
 end
 
 function this:load(mod, options, version)
-	corpMissions.Add_Missions_High("Mission_tosx_Juggernaut", "Corp_Snow")
+	-- corpMissions.Add_Missions_High("Mission_tosx_Juggernaut", "Corp_Snow")
+	corpIslandMissions.Add_Missions_High("Mission_tosx_Juggernaut", "pinnacle")
 end
 
 return this

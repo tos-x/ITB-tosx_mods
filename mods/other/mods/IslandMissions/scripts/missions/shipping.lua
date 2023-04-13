@@ -2,7 +2,8 @@
 
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local this = {id = "Mission_tosx_Shipping"}
-local corpMissions = require(path .."corpMissions")
+--local corpMissions = require(path .."corpMissions")
+local corpIslandMissions = require(path .."corpIslandMissions")
 local astar = require(path .."libs/astar")
 
 local function IsTipImage()
@@ -100,11 +101,21 @@ function Mission_tosx_Shipping:GetCompletedObjectives()
 	end
 	
 	local icetiles = self:GetTerrainList(TERRAIN_ICE)
-	if #icetiles >0 then
+	if #icetiles > 0 then
 		ret[2] = ret[2]:Failed()
 	end
 	
 	return ret
+end
+
+function Mission_tosx_Shipping:GetCompletedStatus()
+	if countAlive(self.Criticals) > 0 and #icetiles == 0 then
+		return "Success"
+	elseif countAlive(self.Criticals) == 0 and #icetiles > 0 then
+		return "Failure"
+	else
+		return "Partial"
+	end
 end
 
 function Mission_tosx_Shipping:UpdateSpawning()
@@ -302,7 +313,8 @@ function this:load(mod, options, version)
 		end
 	end)
 	
-	corpMissions.Add_Missions_Low("Mission_tosx_Shipping", "Corp_Grass")
+	-- corpMissions.Add_Missions_Low("Mission_tosx_Shipping", "Corp_Grass")
+	corpIslandMissions.Add_Missions_Low("Mission_tosx_Shipping", "archive")
 end
 
 return this

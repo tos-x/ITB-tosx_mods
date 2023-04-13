@@ -2,7 +2,8 @@
 
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local this = {id = "Mission_tosx_Earthquake"}
-local corpMissions = require(path .."corpMissions")
+--local corpMissions = require(path .."corpMissions")
+local corpIslandMissions = require(path .."corpIslandMissions")
 
 Mission_tosx_Earthquake = Mission_Infinite:new{
 	Name = "Earthquake",
@@ -109,7 +110,8 @@ function this:init(mod)
 end
 
 function this:load(mod, options, version)
-	corpMissions.Add_Missions_High("Mission_tosx_Earthquake", "Corp_Desert")
+	--corpMissions.Add_Missions_High("Mission_tosx_Earthquake", "Corp_Desert")
+	corpIslandMissions.Add_Missions_High("Mission_tosx_Earthquake", "rst")
 end
 
 return this

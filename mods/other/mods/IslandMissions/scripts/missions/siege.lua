@@ -2,7 +2,8 @@
 
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local this = {id = "Mission_tosx_Siege"}
-local corpMissions = require(path .."corpMissions")
+--local corpMissions = require(path .."corpMissions")
+local corpIslandMissions = require(path .."corpIslandMissions")
 
 
 Mission_tosx_Siege = Mission_Infinite:new{
@@ -76,6 +77,16 @@ end
 function Mission_tosx_Siege:UpdateObjectives()
 	local status = self:CountCrates() == 0 and OBJ_COMPLETE or OBJ_STANDARD
 	Game:AddObjective("Break open both Crates",status, REWARD_REP, 2)
+end
+
+function Mission_tosx_Siege:GetCompletedStatus()
+	if self:CountCrates() == 0 then
+		return "Success"
+	elseif self:CountCrates() > 1 then
+		return "Failure"
+	else
+		return "Partial"
+	end
 end
 
 function Mission_tosx_Siege:StartMission()
@@ -363,8 +374,17 @@ function this:load(mod, options, version)
 		end
 	end)
 
-	-- Add to all 4 default corps
-	corpMissions.Add_Missions_High("Mission_tosx_Siege")
+	-- Allowable corps:
+	local corps = {
+		"archive",
+	    "rst",
+	    "pinnacle",
+	    "detritus",
+		"Watchtower",
+	}
+	
+	-- Add to all 4 default corp slots
+	corpIslandMissions.Add_Missions_High("Mission_tosx_Siege")
 	
 	-- Random number 0-3 (Corp_Grass, Corp_Desert, Corp_Snow, Corp_Factory)
 	modApi:addPostStartGameHook(function()
@@ -374,12 +394,26 @@ function this:load(mod, options, version)
 		end
 	end)
 	
-	-- Randomly remove the mission from 3 of the islands each run
-	-- Note that this code handles removing mission from modded corps, but not adding it
+	-- Randomly remove the mission from 3 of the slots each run
 	modApi:addPreIslandSelectionHook(function(corporation, island)
 		if GAME.tosx_risle and GAME.tosx_risle ~= island then
-			corpMissions.Rem_Missions_High("Mission_tosx_Siege", corporation)
+			corpIslandMissions.Rem_Missions_High("Mission_tosx_Siege", corporation)
+		elseif easyEdit and easyEdit.world then
+			-- Now also remove it from all but allowed corps
+			local disallow = true
+			for i = 1, #corps do
+				if easyEdit.world[island + 1].corporation == corps[i] then
+					-- This slot is set to something compatible
+					disallow = false
+					break
+				end
+			end
+			if disallow then
+				-- This slot doesn't contain anything compatible
+				corpIslandMissions.Rem_Missions_High("Mission_tosx_Siege", corporation)
+			end
 		end
+		
 	end)
 end
 

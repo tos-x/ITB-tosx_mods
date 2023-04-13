@@ -6,7 +6,11 @@ local mod = {
 	version = "0.19",
 	modApiVersion = "2.8.0",
 	icon = "img/icons/mod_icon.png",
-    dependencies = { modApiExt = "1.2" },
+	requirements = { "easyEdit" },--Force to load first
+    dependencies = {
+		modApiExt = "1.2",
+        -- easyEdit = "2.0.4",
+	},
 }
 
 function mod:init()
@@ -15,6 +19,11 @@ function mod:init()
 		
 	self.missions = require(scriptPath .."missions/init")
 	self.missions:init(self)
+	
+	-- Add icons for easyEdit
+	modApi:appendAssets("img/strategy/mission/", "img/missions/", "")
+	modApi:appendAssets("img/strategy/mission/small/", "img/missions/small/", "")
+	--require(scriptPath .."missionList")
 	
 end
 

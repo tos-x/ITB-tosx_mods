@@ -2,7 +2,8 @@
 
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local this = {id = "Mission_tosx_Zapper"}
-local corpMissions = require(path .."corpMissions")
+--local corpMissions = require(path .."corpMissions")
+local corpIslandMissions = require(path .."corpIslandMissions")
 local switch = require(path .."switch")
 
 local function IsTipImage()
@@ -157,6 +158,15 @@ end
 function Mission_tosx_Zapper:GetCompletedObjectives()
 	return objAfterMission:case(countAlive(self.Criticals))
 end
+function Mission_tosx_Zapper:GetCompletedStatus()
+	if countAlive(self.Criticals) > 1 then
+		return "Success"
+	elseif countAlive(self.Criticals) == 0 then
+		return "Failure"
+	else
+		return "Partial"
+	end
+end
 
 tosx_mission_zapper = Pawn:new{
 	Name = "Storm Tower",
@@ -282,7 +292,8 @@ function this:init(mod)
 end
 
 function this:load(mod, options, version)
-	corpMissions.Add_Missions_Low("Mission_tosx_Zapper", "Corp_Desert")
+	-- corpMissions.Add_Missions_Low("Mission_tosx_Zapper", "Corp_Desert")
+	corpIslandMissions.Add_Missions_Low("Mission_tosx_Zapper", "rst")
 end
 
 return this

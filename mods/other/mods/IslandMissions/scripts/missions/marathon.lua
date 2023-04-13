@@ -2,7 +2,8 @@
 
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local this = {id = "Mission_tosx_Marathon"}
-local corpMissions = require(path .."corpMissions")
+--local corpMissions = require(path .."corpMissions")
+local corpIslandMissions = require(path .."corpIslandMissions")
 local switch = require(path .."switch")
 
 local function IsTipImage()
@@ -527,7 +528,8 @@ function this:init(mod)
 end
 
 function this:load(mod, options, version)
-	corpMissions.Add_Missions_High("Mission_tosx_Marathon", "Corp_Factory")
+	-- corpMissions.Add_Missions_High("Mission_tosx_Marathon", "Corp_Factory")
+	corpIslandMissions.Add_Missions_High("Mission_tosx_Marathon", "detritus")
 end
 
 return this
