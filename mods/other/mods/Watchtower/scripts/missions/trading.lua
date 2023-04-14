@@ -76,6 +76,9 @@ function Mission_tosx_Trading:UpdateMission()
 	if self:IsRigAlive() > 0 then
 		if self.Stock >= 4 and not Board:GetPawn(self.RigId):IsPowered() then
 			Board:GetPawn(self.RigId):SetPowered(true)			
+			if Game:GetTeamTurn() == TEAM_PLAYER then
+				Board:GetPawn(self.RigId):SetActive(true)	
+			end
 			PrepareVoiceEvent("Mission_tosx_MercsPaid")
 		elseif self.Stock < 4 and Board:GetPawn(self.RigId):IsPowered() then
 			-- In case of undoMove resetting count
