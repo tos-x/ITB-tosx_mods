@@ -88,7 +88,8 @@ local function MissionUpdate(mission)
 					Board:SetCustomTile(p,"")
 					Board:SetTerrainIcon(p,"")
 				else
-					Board:MarkSpaceDesc(p, terrainTip)
+					-- Don't use Board:MarkSpaceDesc, since environment effects need it
+					--Board:MarkSpaceDesc(p, terrainTip)--!!!
 					Board:SetTerrainIcon(p,terraintile.StatusIcon)
 				end
 			end
@@ -234,6 +235,18 @@ local function ShowTerrainAnimQ()
 	return false
 end
 
+local onTileHighlighted = function(mission, point)	
+	-- Override ground tile tooltip when highlighting Rocks
+	-- Board:MarkSpaceDesc is used by environment effects and could conflict
+		if Board:IsValid(point) and Board:GetTerrain(point) == TERRAIN_ROAD and Board:GetCustomTile(point) == terrainTileImg then	   
+		modApi.modLoaderDictionary["Tile_ground_Title"] = terraintile.TileTooltip[1]
+		modApi.modLoaderDictionary["Tile_ground_Text"] = terraintile.TileTooltip[2]		
+	else
+		modApi.modLoaderDictionary["Tile_ground_Title"] = nil
+		modApi.modLoaderDictionary["Tile_ground_Text"] = nil		
+	end
+end
+
 local FrameDrawn = function(screen)
 	-- Draw the rock animation each frame while aiming, remove when no longer aiming
 	local mission = GetCurrentMission()
@@ -344,11 +357,12 @@ end
 
 local function onModsLoaded()
 	modApi:addPreMissionAvailableHook(PreMission)
-	modApi:addMissionUpdateHook(MissionUpdate)	
+	modApi:addMissionUpdateHook(MissionUpdate)
 	sdlext.addFrameDrawnHook(FrameDrawn)
 	
 	modapiext:addSkillBuildHook(onSkillEffect)
 	modapiext:addFinalEffectBuildHook(onSkillEffect2)
+	modapiext:addTileHighlightedHook(onTileHighlighted)
 end
 	
 modApi.events.onModsInitialized:subscribe(onModsInitialized)
