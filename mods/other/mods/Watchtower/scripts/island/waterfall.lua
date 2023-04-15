@@ -15,7 +15,6 @@ ANIMS[WATERFALL] = Animation:new{
 	NumFrames = 3,
 	Time = 0.19,
 	Loop = true,
-	Layer = LAYER_FLOOR
 	Layer = LAYER_FLOOR--LAYER_BACK
 }
 
@@ -24,7 +23,7 @@ ANIMS['3'..WATERFALL] = ANIMS[WATERFALL]:new{
     Image = "combat/tiles_"..TILESET.."/waterfall_U.png", PosX = -28, PosY = 25
 }
 
-    Image = "combat/tiles_"..TILESET.."/waterfall_R.png", PosX = -27, PosY = 7
+ANIMS['2'..WATERFALL] = ANIMS[WATERFALL]:new{
     Image = "combat/tiles_"..TILESET.."/waterfall_L.png", PosX = -10, PosY = 25
 }
 
