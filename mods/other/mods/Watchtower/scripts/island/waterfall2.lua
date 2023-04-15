@@ -1,9 +1,8 @@
 local mod = mod_loader.mods[modApi.currentMod]
-local customAnim = require(mod.scriptPath.."libs/customAnim")
-require(mod.scriptPath.."libs/boardEvents")
+local customAnim = mod.libs.customAnim
 
 --waterfall name and tileset
-local TILESET = "Watchtower"
+local TILESET = "Nautilus_tileset_id"
 local WATERFALL = TILESET .. "_Waterfall"
 
 ----------------
@@ -15,7 +14,6 @@ ANIMS[WATERFALL] = Animation:new{
 	NumFrames = 3,
 	Time = 0.19,
 	Loop = true,
-	Layer = LAYER_FLOOR
 	Layer = LAYER_FLOOR--LAYER_BACK
 }
 
@@ -24,7 +22,7 @@ ANIMS['3'..WATERFALL] = ANIMS[WATERFALL]:new{
     Image = "combat/tiles_"..TILESET.."/waterfall_U.png", PosX = -28, PosY = 25
 }
 
-    Image = "combat/tiles_"..TILESET.."/waterfall_R.png", PosX = -27, PosY = 7
+ANIMS['2'..WATERFALL] = ANIMS[WATERFALL]:new{
     Image = "combat/tiles_"..TILESET.."/waterfall_L.png", PosX = -10, PosY = 25
 }
 

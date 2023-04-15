@@ -151,12 +151,12 @@ AddPawn("tosx_RigMerc")
 
 tosx_Merc_Weapon = Skill:new{
 	Name = "Modified Engines",
-	Description = "Charge in a line and slam into the target, pushing it.",
+	Description = "Charge in a line and slam into the target, pushing and damaging it.",
 	Icon = "weapons/tosx_rig_engine.png", -- reuse war rig
 	PathSize = 7,
 	LaunchSound = "/weapons/charge",
 	ImpactSound = "/weapons/charge_impact",
-	Damage = 2,
+	Damage = 1,
 	Anim = "explopush2_",
 	TipImage = {
 		Unit = Point(2,3),

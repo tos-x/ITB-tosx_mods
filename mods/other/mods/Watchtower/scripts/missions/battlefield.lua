@@ -24,7 +24,7 @@ function Mission_tosx_Battlefield:UpdateMission()
 		local foes = extract_table(Board:GetPawns(TEAM_ENEMY))
 		for i,id in pairs(foes) do
 			local pawn = Board:GetPawn(id)
-			local hp = math.max(1,pawn:GetHealth() - 2)
+			local hp = math.max(1,pawn:GetMaxHealth() - 2)
 			if pawn:GetHealth() > hp then
 				--LOG("UPDATE Setting pawn ",pawn:GetId()," (type: ",pawn:GetType(),") to hp: ",hp)
 				pawn:SetHealth(hp)
