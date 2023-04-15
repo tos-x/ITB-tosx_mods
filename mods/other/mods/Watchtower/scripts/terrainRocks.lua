@@ -108,11 +108,14 @@ local function DamageCustomTile(point)
 	return false
 end
 
-local function IterateEffects(effect)
+local function IterateEffects(effect, queued)
 	-- Check each skill spaceDamage tile for Rocks
 	local mission = GetCurrentMission()
 	if not mission then return nil end
 	mission[terrainDmgTiles] = {}
+
+	-- Clear animation flag each time skill is built and needs to animate
+	if not queued then mission[terrainAnimStart] = nil end
 	
 	for _, spaceDamage in ipairs(extract_table(effect)) do
 		if DamageCustomTile(spaceDamage.loc) and
@@ -120,8 +123,6 @@ local function IterateEffects(effect)
 		   
 			-- Adjust damage/show anim only if it's not lethal
 			if spaceDamage.iDamage ~= DAMAGE_DEATH then
-				-- Clear animation flag each time skill is built and needs to animate
-				mission[terrainAnimStart] = nil
 				-- Add this tile to our animation list
 				-- For some reason, trying to store Points (during FrameDrawn
 				-- hooks?) messes them up; store as IDs instead
@@ -178,7 +179,8 @@ local function IterateQueuedEffects(effect, pawnid)
 end
 
 local onSkillFinal = function(skillEffect, pawn)
-	local regularEffect = IterateEffects(skillEffect.effect)
+	local queued = not skillEffect.q_effect:empty()
+	local regularEffect = IterateEffects(skillEffect.effect, queued)
 	if not regularEffect then
 		-- Add queued script to clear rocks that are being damaged by enemies
 		IterateQueuedEffects(skillEffect.q_effect, pawn:GetId())
