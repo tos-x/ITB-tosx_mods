@@ -1,7 +1,7 @@
 local mod = {
 	id = "tosx_watchtower",
 	name = "Watchtower Security",
-	version = "0.0.2",
+	version = "0.0.3",
 	modApiVersion = "2.9.1",
 	icon = "img/icon.png",
 	description = "Adds a new island, Watchtower Security.",
