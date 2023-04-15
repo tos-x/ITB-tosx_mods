@@ -24,3 +24,14 @@ tileset:setEnvironmentChance{
 	[TERRAIN_ICE] = 0,
     [TERRAIN_ROCKS] = 15,
 }
+
+local oldonDisabled = tileset.onDisabled
+function tileset:onDisabled()
+	modApi.modLoaderDictionary["Status_kill_Text"] = nil
+	oldonDisabled(self)
+end
+local oldonEnabled = tileset.onEnabled
+function tileset:onEnabled()
+	modApi.modLoaderDictionary["Status_kill_Text"] = "The weapon or environment effect on this tile will kill any unit. Rocks, Shields, and Ice will not block."
+	oldonEnabled(self)
+end
