@@ -36,7 +36,8 @@ modApi:appendAsset("img/combat/icons/icon_tosx_boostmine_glow.png", mod.resource
 Location["combat/icons/icon_tosx_boostmine_glow.png"] = Point(-13,13)
 
 local mine_damage = SpaceDamage(0)
-mine_damage.iFrozen = EFFECT_REMOVE	--Need something or the sImageMark doesn't appear; leave as hidden feature
+--mine_damage.iFrozen = EFFECT_REMOVE	--Need something or the sImageMark doesn't appear; leave as hidden feature
+mine_damage.iCrack = EFFECT_REMOVE	--Need something or the sImageMark doesn't appear; cracks destroy items so it should never happen
 
 tosx_Boost_Mine = {
 	Image = "combat/tosx_boost_mine.png",
