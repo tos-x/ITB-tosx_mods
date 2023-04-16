@@ -357,6 +357,26 @@ local function onModsInitialized()
 	overrideGetStatusTooltip()
 end
 
+-- Override Board:IsDeadly to prevent death effects on rocks
+-- Shouldn't interfere with other mods that also override this
+local function onBoardClassInitialized(BoardClass, board)	
+	BoardClass.IsDeadlyVanilla = board.IsDeadly
+	BoardClass.IsDeadly = function(self, spaceDamage, pawn)
+		Assert.Equals("userdata", type(self), "Argument #0")
+		Assert.Equals("userdata", type(spaceDamage), "Argument #1")
+		Assert.Equals("userdata", type(pawn), "Argument #2")
+
+		local spaceDamageCopy = spaceDamage
+		if spaceDamage and spaceDamage.loc and Board:IsValid(spaceDamage.loc) and
+		   spaceDamage.iDamage and spaceDamage.iDamage ~= DAMAGE_DEATH and 
+		   Board:GetCustomTile(spaceDamage.loc) == "tosx_rocks_0.png" then
+			spaceDamageCopy.iDamage = 0
+		end
+		
+		return self:IsDeadlyVanilla(spaceDamageCopy, pawn)
+	end
+end
+
 local function onModsLoaded()
 	modApi:addPreMissionAvailableHook(PreMission)
 	modApi:addMissionUpdateHook(MissionUpdate)
@@ -369,3 +389,4 @@ end
 	
 modApi.events.onModsInitialized:subscribe(onModsInitialized)
 modApi.events.onModsLoaded:subscribe(onModsLoaded)
+modApi.events.onBoardClassInitialized:subscribe(onBoardClassInitialized)
