@@ -2,6 +2,7 @@
 local mod = modApi:getCurrentMod()
 local path = mod.scriptPath
 local boardEvents = require(path .."libs/boardEvents")
+require(path .."libs/queuedBoost")
 local missionTemplates = require(path .."missions/missionTemplates")
 
 Mission_tosx_BoostMine = Mission_MineBase:new{
@@ -57,6 +58,5 @@ boardEvents.onItemRemoved:subscribe(function(loc, removed_item)
         end
     end
 end)
-
 
 TILE_TOOLTIPS[tosx_Boost_Mine.Tooltip] = {"Boost Mine", "Any unit that steps on this space will trigger the mine and gain Boosted."}
