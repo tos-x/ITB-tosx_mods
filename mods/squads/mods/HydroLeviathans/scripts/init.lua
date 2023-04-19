@@ -37,7 +37,7 @@ local function init(self)
 	
 	local palette = {
 		id = self.id,
-		name = "Levithan Teal", 
+		name = "Leviathan Teal", 
 		image = "img/units/player/tosx_mech_cargo.png",
 		colorMap = {
 			lights =         {255, 115, 68},	--lights
@@ -107,7 +107,7 @@ end
 return {
 	id = "tosx_HydroLeviathans",
 	name = "Hydro Leviathans",
-	version = "0.24",
+	version = "0.25",
 	modApiVersion = "2.8.2",
 	icon = "img/icons/mod_icon.png",
 	description = description,
