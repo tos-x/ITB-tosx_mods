@@ -135,7 +135,7 @@ end
 
 function this:load(mod, options, version)
 	--corpMissions.Add_Missions_High("Mission_tosx_Cannon", "Corp_Grass")
-	corpIslandMissions.Add_Missions_High("Mission_tosx_Cannon", "archive")
+	--corpIslandMissions.Add_Missions_High("Mission_tosx_Cannon", "archive")
 end
 
 return this

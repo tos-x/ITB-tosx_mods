@@ -4,6 +4,7 @@ local mod = {
 	version = "0.0.3",
 	modApiVersion = "2.9.1",
 	icon = "img/icon.png",
+	requirements = {"tosx_island_missons"},
 	description = "Adds a new island, Watchtower Security.",
 	dependencies = {
         modApiExt = "1.18",
@@ -34,7 +35,16 @@ function mod:init()
 	
 	-- require(path .."achievements")--!!!
 	-- require(path .."achievementTriggers")
-			
+	
+	-- local function onBoardAddEffect(effect)
+		-- LOG("-- in effect subscription")
+	-- end
+	-- local function onBoardDamageSpace(spaceDamage)
+		-- LOG("-- in damage subscription")
+	-- end
+	
+	-- modApi.events.onBoardAddEffect:subscribe(onBoardAddEffect)
+	-- modApi.events.onBoardDamageSpace:subscribe(onBoardDamageSpace)
 end
 
 function mod:load(options, version)

@@ -19,3 +19,8 @@ missionList:addMission("Mission_tosx_Tanker", HIGH_THREAT)
 missionList:addMission("Mission_tosx_Trading", HIGH_THREAT)
 missionList:addMission("Mission_tosx_TrainRocks", HIGH_THREAT)
 missionList:addMission("Mission_tosx_Rallyrace", HIGH_THREAT)
+
+if mod_loader.mods["tosx_island_missons"] and mod_loader.mods["tosx_island_missons"].initialized then
+	missionList:addMission("Mission_tosx_Disease", HIGH_THREAT)
+	missionList:addMission("Mission_tosx_Siege", HIGH_THREAT)
+end

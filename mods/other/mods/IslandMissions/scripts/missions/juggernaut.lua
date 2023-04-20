@@ -255,7 +255,7 @@ end
 
 function this:load(mod, options, version)
 	-- corpMissions.Add_Missions_High("Mission_tosx_Juggernaut", "Corp_Snow")
-	corpIslandMissions.Add_Missions_High("Mission_tosx_Juggernaut", "pinnacle")
+	--corpIslandMissions.Add_Missions_High("Mission_tosx_Juggernaut", "pinnacle")
 end
 
 return this

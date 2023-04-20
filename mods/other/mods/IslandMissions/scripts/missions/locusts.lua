@@ -247,7 +247,7 @@ end
 
 function this:load(mod, options, version)
 	-- corpMissions.Add_Missions_High("Mission_tosx_Locusts", "Corp_Snow")
-	corpIslandMissions.Add_Missions_High("Mission_tosx_Locusts", "pinnacle")
+	--corpIslandMissions.Add_Missions_High("Mission_tosx_Locusts", "pinnacle")
 end
 
 return this

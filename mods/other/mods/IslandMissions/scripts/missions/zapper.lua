@@ -293,7 +293,7 @@ end
 
 function this:load(mod, options, version)
 	-- corpMissions.Add_Missions_Low("Mission_tosx_Zapper", "Corp_Desert")
-	corpIslandMissions.Add_Missions_Low("Mission_tosx_Zapper", "rst")
+	--corpIslandMissions.Add_Missions_Low("Mission_tosx_Zapper", "rst")
 end
 
 return this

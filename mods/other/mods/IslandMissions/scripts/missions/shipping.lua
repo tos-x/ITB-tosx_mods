@@ -322,7 +322,7 @@ function this:load(mod, options, version)
 	end)
 	
 	-- corpMissions.Add_Missions_Low("Mission_tosx_Shipping", "Corp_Grass")
-	corpIslandMissions.Add_Missions_Low("Mission_tosx_Shipping", "archive")
+	--corpIslandMissions.Add_Missions_Low("Mission_tosx_Shipping", "archive")
 end
 
 return this

@@ -384,7 +384,7 @@ function this:load(mod, options, version)
 	}
 	
 	-- Add to all 4 default corp slots
-	corpIslandMissions.Add_Missions_High("Mission_tosx_Siege")
+	--corpIslandMissions.Add_Missions_High("Mission_tosx_Siege")
 	
 	-- Random number 0-3 (Corp_Grass, Corp_Desert, Corp_Snow, Corp_Factory)
 	modApi:addPostStartGameHook(function()

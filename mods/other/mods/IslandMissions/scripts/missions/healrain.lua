@@ -100,7 +100,7 @@ end
 
 function this:load(mod, options, version)
 	-- corpMissions.Add_Missions_High("Mission_tosx_Healrain", "Corp_Factory")
-	corpIslandMissions.Add_Missions_High("Mission_tosx_Healrain", "detritus")
+	--corpIslandMissions.Add_Missions_High("Mission_tosx_Healrain", "detritus")
 end
 
 return this
