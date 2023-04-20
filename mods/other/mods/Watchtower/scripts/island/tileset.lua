@@ -5,7 +5,7 @@ local tileset = easyEdit.tileset:add("Watchtower", "grass")
 tileset.name = "Rocks"
 
 -- appends all assets in the path relative to mod's resource path
-tileset:appendAssets("img/tileset/")
+tileset:appendAssets("img/tileset/") --destination example: img/combat/tiles_Watchtower/ground_0.png
 
 -- display name of the tileset in game
 tileset:setClimate("Rocky")

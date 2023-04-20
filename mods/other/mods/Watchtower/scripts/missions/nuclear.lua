@@ -73,6 +73,7 @@ ANIMS.tosx_RadBlast = Animation:new{
 tosx_env_nuclear = Env_Attack:new{
 	Name = "Radioactive Waste",
 	Text = "Lethal radiation will gradually contaminate the map.",
+	Ordered = true,
 	Decription = "Radiation will kill any unit on this tile.",
 	Decription2 = "Radiation will reduce this unit to 1 health.",
 	StratText = "RADIATION",
