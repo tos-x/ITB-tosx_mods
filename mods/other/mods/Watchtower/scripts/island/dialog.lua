@@ -344,6 +344,27 @@ return {
 		"I have already put a contract out to all the mercenaries of the wastes: to hunt that creature down and finish it off.",
 	},
 	
+	-- Final mission
+	MissionFinal_StartResponse = {
+		"Deploying remote power pylons. They'll keep you connected to the Grid.",
+	},
+	MissionFinal_FallStart = {
+		"Incoming seismic activity. Prepare yourselves.",
+	},
+	MissionFinal_Pylons = {
+		"Deploying additional power pylons. Keep them operational. We don't have any more.",
+	},
+	MissionFinal_BombResponse = {
+		"Deploying a Renfield Bomb. Defend it while it primes and it will destroy the hive.",
+	},
+	MissionFinal_BombDestroyed = {
+		"Deploying another bomb, but it will need more time to prime. Don't waste this one.",
+	},
+	MissionFinal_BombArmed = {
+		"The Renfield bomb is ready. If you can escape, do so now, or your fate will be the same as the Vek.",
+	},
+	
+	-- Island missions
 	Mission_tosx_Siege_Briefing = {
 		"A massive swarm of Vek is preparing to attack this remote region. You should find whatever spare hardware you can and activate it, if you wish to weather the onslaught.",
 	},
@@ -366,7 +387,7 @@ return {
 		"I have tasked some of the more competent wasteland scavengers to carefully retrieve the corpse of that Vek, so we can study its affliction and prepare a cure... just in case.",
 	},
 	
--- Watchtower barks
+	-- Watchtower barks
 	Mission_tosx_Sonic_Destroyed = {
 		"That Disruptor was vital to the defense of this region.",
 		"Commander, you were ordered to protect that Disruptor.",
