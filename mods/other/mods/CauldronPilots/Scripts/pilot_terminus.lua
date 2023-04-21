@@ -13,6 +13,7 @@ local pilot = {
 
 ---
 local onSkillEffect = function(mission, pawn, weaponId, p1, p2, skillEffect)
+	if not pawn or not skillEffect or not Board:IsValid(p1) then return end
 	local mechs = extract_table(Board:GetPawns(TEAM_PLAYER))
 	for i,id in pairs(mechs) do
 		if Board:GetPawn(id):IsAbility(pilot.Skill) then

@@ -92,11 +92,11 @@ local onSkillEffectFinal = function(pawn, skillEffect)
 	end
 end
 local onSkillEffect = function(mission, pawn, weaponId, p1, p2, skillEffect)
-	if not skillEffect then return end
+	if not skillEffect or not pawn then return end
 	onSkillEffectFinal(pawn, skillEffect)
 end
 local onSkillEffect2 = function(mission, pawn, weaponId, p1, p2, p3, skillEffect)
-	if not skillEffect then return end
+	if not skillEffect or not pawn then return end
 	onSkillEffectFinal(pawn, skillEffect)
 end
 
