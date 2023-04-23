@@ -120,13 +120,6 @@ function tosx_env_guided:GetAttackEffect(location)
 			effect:AddSound("/weapons/heavy_rocket")
 			damage = SpaceDamage(v,DAMAGE_DEATH)
 			
-			-- Skillbuild hooks don't catch Board:AddEffect
-			-- Manually hack in our rock terrain effect until a better way is found
-			if Board:GetCustomTile(v) == "tosx_rocks_0.png"then
-				--damage.iDamage = DAMAGE_ZERO --DAMAGE_DEATH shall go through rocks
-				damage.sScript = "tosx_RocksCrumble("..v:GetString()..")"
-			end
-			
 			damage.sAnimation = "ExploAir2"
 			damage.sSound = "/impact/generic/explosion_large"
 			effect:AddArtillery(damage, self.ShotUp, NO_DELAY)

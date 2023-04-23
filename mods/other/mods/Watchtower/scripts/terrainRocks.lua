@@ -134,7 +134,7 @@ local function IterateEffects(effect, queued)
 			
 			-- Add our script to the spaceDamage object (even lethal dmg will clear tile)
 			local sscript = terraintile.DamageFunction .. "("..spaceDamage.loc:GetString()..")"
-			if not spaceDamage.sScript or (spaceDamage.HasMetadata and spaceDamage:HasMetadata()) then
+			if not spaceDamage.sScript then
 				-- modloader adds metadata via sScript to some projectiles/grapples/etc; overwrite
 				spaceDamage.sScript = sscript
 			else
@@ -168,7 +168,7 @@ local function IterateQueuedEffects(effect, pawnid)
 			
 			-- Add our script to the spaceDamage object (even lethal dmg will clear tile)
 			local sscript = terraintile.DamageFunction .. "("..spaceDamage.loc:GetString()..")"
-			if not spaceDamage.sScript or (spaceDamage.HasMetadata and spaceDamage:HasMetadata()) then
+			if not spaceDamage.sScript then
 				-- modloader adds metadata via sScript to some projectiles/grapples/etc; overwrite
 				spaceDamage.sScript = sscript
 			else
@@ -195,6 +195,27 @@ end
 local onSkillEffect2 = function(mission, pawn, weaponId, p1, p2, p3, skillEffect)
 	if not skillEffect or not pawn then return end
 	onSkillFinal(skillEffect, pawn)
+end
+
+local function onBoardAddEffect(skillEffect)
+	local queued = true -- Don't bother clearing anim flag
+	IterateEffects(skillEffect.effect, queued)
+end
+
+local function onBoardDamageSpace(spaceDamage)
+	if DamageCustomTile(spaceDamage.loc) and
+	   spaceDamage.iDamage > 0 then
+		if spaceDamage.iDamage ~= DAMAGE_DEATH then
+			spaceDamage.iDamage = DAMAGE_ZERO
+		end		
+		-- Add our script to the spaceDamage object (even lethal dmg will clear tile)
+		local sscript = terraintile.DamageFunction .. "("..spaceDamage.loc:GetString()..")"
+		if not spaceDamage.sScript then
+			spaceDamage.sScript = sscript
+		else
+			spaceDamage.sScript = spaceDamage.sScript .. " " .. sscript
+		end
+	end
 end
 
 local function ShowTerrainAnim()
@@ -376,7 +397,7 @@ local function onBoardClassInitialized(BoardClass, board)
 		return self:IsDeadlyVanilla(spaceDamageCopy, pawn)
 	end
 end
-
+	
 local function onModsLoaded()
 	modApi:addPreMissionAvailableHook(PreMission)
 	modApi:addMissionUpdateHook(MissionUpdate)
@@ -390,3 +411,5 @@ end
 modApi.events.onModsInitialized:subscribe(onModsInitialized)
 modApi.events.onModsLoaded:subscribe(onModsLoaded)
 modApi.events.onBoardClassInitialized:subscribe(onBoardClassInitialized)
+modApi.events.onBoardAddEffect:subscribe(onBoardAddEffect)
+modApi.events.onBoardDamageSpace:subscribe(onBoardDamageSpace)
