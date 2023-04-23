@@ -139,6 +139,11 @@ local onSkillEffect2 = function(mission, pawn, weaponId, p1, p2, p3, skillEffect
 	if not skillEffect then return end
 	onSkillEffectFinal(skillEffect)
 end
+
+local function onBoardAddEffect(skillEffect)
+	if not skillEffect then return end
+	onSkillEffectFinal(skillEffect)
+end
 ---
 
 function this:GetPilot()
@@ -150,6 +155,8 @@ function this:init(mod)
 	require(mod.scriptPath .."libs/pilotSkill_tooltip").Add(pilot.Skill, PilotSkill("Ricochet", "Deals additional damage to enemies that bump Mech."))
 	
 	-- art, icons, animations
+	
+	modApi.events.onBoardAddEffect:subscribe(onBoardAddEffect)
 end
 
 function this:load()	
