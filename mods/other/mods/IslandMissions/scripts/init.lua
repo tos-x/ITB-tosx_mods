@@ -3,12 +3,12 @@ local mod = {
 	id = "tosx_island_missons",
 	name = "Island Missions",
 	description = "Adds 8 new island-specific missions and 2 new generic missions.",
-	version = "0.20",
-	modApiVersion = "2.8.0",
+	version = "0.21",
+	modApiVersion = "2.9.2",
 	icon = "img/icons/mod_icon.png",
     dependencies = {
-		modApiExt = "1.2",
-        easyEdit = "2.0.4",
+        modApiExt = "1.21",
+        easyEdit = "2.0.6",
 	},
 }
 

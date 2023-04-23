@@ -1,15 +1,15 @@
 local mod = {
 	id = "tosx_watchtower",
 	name = "Watchtower Security",
-	version = "0.0.3",
-	modApiVersion = "2.9.1",
+	version = "0.0.4",
+	modApiVersion = "2.9.2",
 	icon = "img/icon.png",
 	requirements = {"tosx_island_missons"},
 	description = "Adds a new island, Watchtower Security.",
 	dependencies = {
-        modApiExt = "1.18",
-        memedit = "1.0.2",
-        easyEdit = "2.0.4",
+        modApiExt = "1.21",
+        memedit = "1.0.4",
+        easyEdit = "2.0.6",
     }
 }
 
