@@ -111,7 +111,7 @@ end
 
 function this:load(mod, options, version)
 	--corpMissions.Add_Missions_High("Mission_tosx_Earthquake", "Corp_Desert")
-	corpIslandMissions.Add_Missions_High("Mission_tosx_Earthquake", "rst")
+	--corpIslandMissions.Add_Missions_High("Mission_tosx_Earthquake", "rst")
 end
 
 return this

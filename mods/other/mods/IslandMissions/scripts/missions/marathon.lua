@@ -529,7 +529,7 @@ end
 
 function this:load(mod, options, version)
 	-- corpMissions.Add_Missions_High("Mission_tosx_Marathon", "Corp_Factory")
-	corpIslandMissions.Add_Missions_High("Mission_tosx_Marathon", "detritus")
+	--corpIslandMissions.Add_Missions_High("Mission_tosx_Marathon", "detritus")
 end
 
 return this

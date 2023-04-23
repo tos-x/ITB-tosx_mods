@@ -3,13 +3,12 @@ local mod = {
 	id = "tosx_island_missons",
 	name = "Island Missions",
 	description = "Adds 8 new island-specific missions and 2 new generic missions.",
-	version = "0.20",
-	modApiVersion = "2.8.0",
+	version = "0.21",
+	modApiVersion = "2.9.2",
 	icon = "img/icons/mod_icon.png",
-	requirements = { "easyEdit" },--Force to load first
     dependencies = {
-		modApiExt = "1.2",
-        -- easyEdit = "2.0.4",
+        modApiExt = "1.21",
+        easyEdit = "2.0.6",
 	},
 }
 
@@ -23,7 +22,7 @@ function mod:init()
 	-- Add icons for easyEdit
 	modApi:appendAssets("img/strategy/mission/", "img/missions/", "")
 	modApi:appendAssets("img/strategy/mission/small/", "img/missions/small/", "")
-	--require(scriptPath .."missionList")
+	require(scriptPath .."missionList")
 	
 end
 
