@@ -35,16 +35,6 @@ function mod:init()
 	
 	-- require(path .."achievements")--!!!
 	-- require(path .."achievementTriggers")
-	
-	-- local function onBoardAddEffect(effect)
-		-- LOG("-- in effect subscription")
-	-- end
-	-- local function onBoardDamageSpace(spaceDamage)
-		-- LOG("-- in damage subscription")
-	-- end
-	
-	-- modApi.events.onBoardAddEffect:subscribe(onBoardAddEffect)
-	-- modApi.events.onBoardDamageSpace:subscribe(onBoardDamageSpace)
 end
 
 function mod:load(options, version)
