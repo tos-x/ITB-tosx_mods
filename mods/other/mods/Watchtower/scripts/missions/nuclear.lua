@@ -22,8 +22,8 @@ Mission_tosx_Nuclear = Mission_Infinite:new{
 	BonusPool = copy_table(missionTemplates.bonusAll),
 	UseBonus = true,
 	Environment = "tosx_env_nuclear",
-	Sites = {},
-	Active = {},
+	Sites = nil,
+	Active = nil,
 }
 
 -- Add CEO dialog
