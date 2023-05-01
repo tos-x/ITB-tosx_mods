@@ -197,7 +197,9 @@ local onSkillEffectFinal = function(skillEffect)
 			local fx = SkillEffect();
 			local damage = SpaceDamage(Point(]]..retpawn.space:GetString()..[[),]]..retpawn.pushamount..[[);
 			fx:AddDamage(damage);
+			tosx_knightskip = true
 			Board:AddEffect(fx)
+			tosx_knightskip = nil
 			]])
 	else
 		retpawn = IterateEffects(skillEffect.q_effect)
@@ -206,7 +208,9 @@ local onSkillEffectFinal = function(skillEffect)
 				local fx = SkillEffect();
 				local damage = SpaceDamage(Point(]]..retpawn.space:GetString()..[[),]]..retpawn.pushamount..[[);
 				fx:AddDamage(damage);
+				tosx_knightskip = true
 				Board:AddEffect(fx)
+				tosx_knightskip = nil
 				]])
 		end
 	end
@@ -220,7 +224,7 @@ local onSkillEffect2 = function(mission, pawn, weaponId, p1, p2, p3, skillEffect
 	onSkillEffectFinal(skillEffect)
 end
 local function onBoardAddEffect(skillEffect)
-	if not skillEffect then return end
+	if not skillEffect or tosx_knightskip then return end
 	onSkillEffectFinal(skillEffect)
 end
 ---

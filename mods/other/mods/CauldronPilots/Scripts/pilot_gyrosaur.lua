@@ -114,7 +114,9 @@ local onSkillEffectFinal = function(skillEffect)
 				local fx = SkillEffect();
 				local damage = SpaceDamage(Point(]]..ret[i]:GetString()..[[),1);
 				fx:AddDamage(damage);
+				tosx_gyroskip = true
 				Board:AddEffect(fx)
+				tosx_gyroskip = nil
 				]])
 			end
 	else
@@ -125,7 +127,9 @@ local onSkillEffectFinal = function(skillEffect)
 					local fx = SkillEffect();
 					local damage = SpaceDamage(Point(]]..ret[i]:GetString()..[[),1);
 					fx:AddDamage(damage);
+					tosx_gyroskip = true
 					Board:AddEffect(fx)
+					tosx_gyroskip = nil
 					]])
 			end
 		end
@@ -141,7 +145,7 @@ local onSkillEffect2 = function(mission, pawn, weaponId, p1, p2, p3, skillEffect
 end
 
 local function onBoardAddEffect(skillEffect)
-	if not skillEffect then return end
+	if not skillEffect or tosx_gyroskip then return end
 	onSkillEffectFinal(skillEffect)
 end
 ---
