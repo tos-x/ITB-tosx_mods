@@ -46,6 +46,7 @@ end
 
 function this:load()	
 	modapiext:addPawnTrackedHook(function(mission, pawn)
+		if not mission or not pawn then return end
 		local p0 = pawn:GetSpace()
 		for dir = DIR_START, DIR_END do
 			local point = p0 + DIR_VECTORS[dir]
