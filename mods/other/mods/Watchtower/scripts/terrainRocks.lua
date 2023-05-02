@@ -16,7 +16,6 @@ local mod = modApi:getCurrentMod()
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 
 local customAnim = require(path .."libs/customAnim")
-local selected = require(path .."libs/selected")
 local weaponArmed = require(path .."libs/weaponArmed")
 	
 local terraintile = {
@@ -220,7 +219,7 @@ end
 
 local function ShowTerrainAnim()
 	-- When a player pawn is aiming a weapon, returns true
-	local pawn = selected:Get()
+	local pawn = Board:GetSelectedPawn()
 	if pawn and
 	   not pawn:IsDead() and
 	   pawn:GetArmedWeaponId() > 0 and
@@ -244,7 +243,7 @@ local function ShowTerrainAnimQ()
 	if Board:IsPawnSpace(point) then
 		local id = Board:GetPawn(point):GetId()
 		if mission[terrainDmgTilesQ] and mission[terrainDmgTilesQ][id] and #mission[terrainDmgTilesQ][id] > 0 then
-			local pawn = selected:Get()
+			local pawn = Board:GetSelectedPawn()
 			if pawn and not pawn:IsDead() and pawn:GetArmedWeaponId() > 0 then	
 				-- Ignore mousing over enemies while aiming player weapons (except moveSkill)
 				return false

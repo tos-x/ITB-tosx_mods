@@ -13,7 +13,7 @@ local pilot = {
 
 ---
 local function IsLowPawnSelected()
-	local pawn = this.selected:Get()
+	local pawn = Board:GetSelectedPawn()
 	return 
 		pawn								and
 		not pawn:IsDead()					and
@@ -170,9 +170,6 @@ function this:init(mod)
 		}
 	end
 	
-	self.selected = require(mod.scriptPath .."libs/selected")
-	self.selected:init()
-	
 	Emitter_Pilot_Low4 = Emitter:new{
 		image = "effects/smoke/pilot_low_snow.png",
 		fade_in = false,
@@ -196,8 +193,6 @@ function this:init(mod)
 end
 
 function this:load()
-	self.selected:load()
-	
 	modApi:addPreEnvironmentHook(function(mission)
 		if not mission.LowEnv1 then
 			mission.LowEnv1 = true

@@ -17,7 +17,7 @@ local pilot = {
 --]]
 
 local function IsAbilityActive()
-	local pawn = this.selected:Get()
+	local pawn = Board:GetSelectedPawn()
 	return 
 		pawn								and
 		not pawn:IsDead()					and
@@ -102,9 +102,6 @@ end
 
 function this:init(mod)	
 	self.id = mod.id .."_aloy_"
-	
-	self.selected = require(mod.scriptPath .."libs/selected")
-	self.selected:init()
 	
 	--CreatePilot(pilot)
 	
@@ -248,7 +245,6 @@ tosx_analyzeNew = function(mission)
 end
 
 function this:load()
-	self.selected:load()
 	modapiext:addSkillBuildHook(onSkillEffect)
 	modapiext:addFinalEffectBuildHook(onSkillEffect2)
 	modApi:addPreEnvironmentHook(tosx_analyzeNew)
