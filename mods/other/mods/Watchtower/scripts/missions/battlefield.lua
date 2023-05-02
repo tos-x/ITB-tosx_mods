@@ -36,7 +36,7 @@ end
 -- Have to do this via a hook, because adjusting the spawn functions won't save the
 -- pawn:SetHealth() change to spawns if game is quit and restarted
 local function onTracked(mission, pawn)
-	if not mission or mission.ID ~= "Mission_tosx_Battlefield" then return end
+	if not mission or not pawn or mission.ID ~= "Mission_tosx_Battlefield" then return end
 	local reg = GetCurrentRegion(RegionData)
 	if reg ~= nil then
 		for i, a in ipairs(reg.player.map_data.spawn_ids) do 
