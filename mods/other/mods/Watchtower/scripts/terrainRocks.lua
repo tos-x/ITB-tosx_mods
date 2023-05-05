@@ -16,7 +16,6 @@ local mod = modApi:getCurrentMod()
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 
 local customAnim = require(path .."libs/customAnim")
-local selected = require(path .."libs/selected")
 local weaponArmed = require(path .."libs/weaponArmed")
 	
 local terraintile = {
@@ -220,7 +219,7 @@ end
 
 local function ShowTerrainAnim()
 	-- When a player pawn is aiming a weapon, returns true
-	local pawn = selected:Get()
+	local pawn = Board:GetSelectedPawn()
 	if pawn and
 	   not pawn:IsDead() and
 	   pawn:GetArmedWeaponId() > 0 and
@@ -244,7 +243,7 @@ local function ShowTerrainAnimQ()
 	if Board:IsPawnSpace(point) then
 		local id = Board:GetPawn(point):GetId()
 		if mission[terrainDmgTilesQ] and mission[terrainDmgTilesQ][id] and #mission[terrainDmgTilesQ][id] > 0 then
-			local pawn = selected:Get()
+			local pawn = Board:GetSelectedPawn()
 			if pawn and not pawn:IsDead() and pawn:GetArmedWeaponId() > 0 then	
 				-- Ignore mousing over enemies while aiming player weapons (except moveSkill)
 				return false
@@ -387,14 +386,14 @@ local function onBoardClassInitialized(BoardClass, board)
 		Assert.Equals("userdata", type(spaceDamage), "Argument #1")
 		Assert.Equals("userdata", type(pawn), "Argument #2")
 
-		local spaceDamageCopy = spaceDamage
+		--local spaceDamageCopy = spaceDamage
 		if spaceDamage and spaceDamage.loc and Board:IsValid(spaceDamage.loc) and
 		   spaceDamage.iDamage and spaceDamage.iDamage ~= DAMAGE_DEATH and 
 		   Board:GetCustomTile(spaceDamage.loc) == "tosx_rocks_0.png" then
-			spaceDamageCopy.iDamage = 0
+			spaceDamage.iDamage = DAMAGE_ZERO
 		end
 		
-		return self:IsDeadlyVanilla(spaceDamageCopy, pawn)
+		return self:IsDeadlyVanilla(spaceDamage, pawn)
 	end
 end
 	

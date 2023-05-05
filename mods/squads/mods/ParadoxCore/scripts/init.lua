@@ -3,13 +3,13 @@ local descriptiontext = "Hailing from a future more distant than any other Squad
 local mod = {
 	id = "tosx_ParadoxCore",
 	name = "Paradox Core",
-	version = "0.12",
-	modApiVersion = "2.8.2",
+	version = "0.13",
+	modApiVersion = "2.9.2",
 	icon = "img/icons/mod_icon.png",	
 	description = descriptiontext,
     dependencies = {
-		modApiExt = "1.2",
-		easyEdit = "2.0.2",
+        modApiExt = "1.21",
+		easyEdit = "2.0.6",
 	},
 }
 

@@ -115,16 +115,12 @@ tosx_Tanker_Siphon = Skill:new{
 	TipImage = {
 		Unit = Point(2,2),
 		Target = Point(2,1),
+		Water = Point(2,1),
 		CustomPawn = "tosx_Tanker1",
 	}
 }
 
-function tosx_Tanker_Siphon:GetTargetArea(p1)
-	-- Needed for TipImage to show water
-	if Board:IsTipImage() and Board:GetTerrain(Point(2,1)) ~= TERRAIN_WATER then
-		Board:SetTerrain(Point(2,1), TERRAIN_WATER)
-	end
-	
+function tosx_Tanker_Siphon:GetTargetArea(p1)	
 	local ret = PointList()
 
 	local pathing = Pawn:GetPathProf()

@@ -2,7 +2,6 @@
 local path = mod_loader.mods[modApi.currentMod].scriptPath
 local previewer = require(path .."libs/weaponPreview")
 local customAnim = require(path .."libs/customAnim")
-local selected = require(path .."libs/selected")
 local getWeapons = require(path .."libs/getWeapons")
 local tips = require(path .."libs/tutorialTips")
 local trait = require(path .."libs/trait")
@@ -423,6 +422,7 @@ local function NewTurnLoopUnits(mission)
 end
 
 local function NewPawnLoopUnits(mission, pawn)
+	if not mission or not pawn then return end
 	--LOG("-- Record a new pawn")
 	if (not setting_TrackAllies and pawn:GetTeam() ~= TEAM_ENEMY) then return false end
 	TrackLoop(pawn:GetId())
@@ -542,17 +542,14 @@ local function ShowLoopParent(screen)
 	
 	local mission = GetCurrentMission()
 	if not mission or not Board then return end
-	local sid = selected:Get()
+	local sid = Board:GetSelectedPawnId()
 	if sid then
-		if sid:GetId() then
-			sid = sid:GetId()
-			if sid ~= selected_id then
-				--LOG("Selected someone new")
-				selected_id = sid
-				if parent_id > -1 then
-					customAnim:rem(parent_id, "tosx_loop_icon0a")
-					parent_id = -1
-				end
+		if sid ~= selected_id then
+			--LOG("Selected someone new")
+			selected_id = sid
+			if parent_id > -1 then
+				customAnim:rem(parent_id, "tosx_loop_icon0a")
+				parent_id = -1
 			end
 		end
 	elseif selected_id > -1 then
@@ -587,16 +584,11 @@ end
 function this:init(mod)	
 	self.id = mod.id .."_tosx_"
 	
-	self.selected = require(mod.scriptPath .."libs/selected")
-	self.selected:init()
-	
 	sdlext.addFrameDrawnHook(ShowLoopParent)
 end
 
 
 function this:load()
-	self.selected:load()
-
 	modapiext:addPawnTrackedHook(NewPawnLoopUnits)
 	modapiext:addPawnKilledHook(InstantUnloopDeath)
 	modapiext:addPawnDamagedHook(TrackBurrowers)

@@ -38,7 +38,6 @@ function mod:init()
 end
 
 function mod:load(options, version)
-	require(self.scriptPath .."libs/selected"):load()
 end
 
 return mod

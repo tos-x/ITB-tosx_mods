@@ -148,6 +148,7 @@ tosx_mission_battleship = Pawn:new{
 	Flying = true,
 	tosx_trait_swimming = true,
 }
+Pawn_Texts.tosx_mission_battleship = "Ancient Battleship" -- Needed to better detect when pawn type is highlighted from unit menu
 
 tosx_mission_battleshipAtk = ArtilleryDefault:new{
 	Name = "Ancient Cannons",
@@ -160,6 +161,12 @@ tosx_mission_battleshipAtk = ArtilleryDefault:new{
 	LaunchSound = "/weapons/dual_shot",
 	ImpactSound = "/impact/generic/explosion",
 	TipImage = {
+		Water = Point(0,3),
+		Water = Point(1,3),
+		Water = Point(2,3),
+		Water = Point(3,3),
+		Water = Point(4,3),
+		Water = Point(5,3),
 		Unit = Point(2,3),
 		Enemy = Point(2,1),
 		Target = Point(2,1),
@@ -168,15 +175,6 @@ tosx_mission_battleshipAtk = ArtilleryDefault:new{
 }
 	
 function tosx_mission_battleshipAtk:GetTargetArea(p1)
-	-- Needed for TipImage to show water
-	if not Board.gameBoard then
-		if Board:GetSize() == Point(6, 6) and Board:GetTerrain(Point(0,3)) ~= TERRAIN_WATER then
-			for i = 0,5 do
-				Board:SetTerrain(Point(i,3), TERRAIN_WATER)
-			end
-		end
-	end
-
 	local ret = PointList()	
 	for dir = DIR_START, DIR_END do
 		for i = 2, self.ArtillerySize do
@@ -248,9 +246,8 @@ end
 
 
 
-function this:init(mod)
-	self.swimming = require(mod.scriptPath.. "swimming")
-	self.swimming:init(mod)
+function this:init(mod)	
+	require(mod.scriptPath.. "libs/swimmingIcon")
 	
 	modApi:appendAsset("img/units/mission/tosx_battleship.png", mod.resourcePath .."img/units/mission/battleship.png")
 	modApi:appendAsset("img/units/mission/tosx_battleship_ns.png", mod.resourcePath .."img/units/mission/battleship_ns.png")
