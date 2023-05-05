@@ -29,9 +29,6 @@ end
 function mod:load(options, version)
 	local scriptPath = self.scriptPath
 	self.missions:load(self, options, version)
-	require(scriptPath .."libs/menu"):load()
-	require(scriptPath .."libs/selected"):load()
-	require(scriptPath .."libs/highlighted"):load()
 end
 
 return mod
