@@ -82,6 +82,7 @@ local function MissionUpdate(mission)
 				if Board:GetTerrain(p) ~= TERRAIN_ROAD or
 				   Board:IsAcid(p) or
 				   Board:IsFire(p) or
+				   Board:IsCracked(p) or
 				   Board:IsPod(p) then
 					-- Our custom terrain should be cleared
 					Board:SetCustomTile(p,"")
