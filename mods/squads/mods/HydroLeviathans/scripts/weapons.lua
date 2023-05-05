@@ -256,6 +256,7 @@ tosx_Ranged_HydroCannon = Skill:new{
 	--UpgradeList = { "Overflow",  "+1 Damage"  },
 	UpgradeCost = { 2,2 },
 	TipImage = {
+		Water = Point(2,4),
 		Unit = Point(2,3),
 		CustomEnemy = "Hornet2",
 		Enemy = Point(2,1),
@@ -266,12 +267,7 @@ tosx_Ranged_HydroCannon = Skill:new{
 }
 modApi:addWeaponDrop("tosx_Ranged_HydroCannon")
 
-function tosx_Ranged_HydroCannon:GetTargetArea(p1)
-	-- Needed for TipImage to show water; check for Hornet to avoid making water on second shot
-	if IsTipImage() and Board:GetTerrain(Point(2,4)) ~= TERRAIN_WATER and Board:IsPawnSpace(Point(2,1)) then
-		Board:SetTerrain(Point(2,4), TERRAIN_WATER)
-	end
-			
+function tosx_Ranged_HydroCannon:GetTargetArea(p1)			
 	local ret = PointList()	
 	for dir = DIR_START, DIR_END do
 		for i = 2, self.ArtillerySize do
