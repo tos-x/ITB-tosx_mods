@@ -386,14 +386,14 @@ local function onBoardClassInitialized(BoardClass, board)
 		Assert.Equals("userdata", type(spaceDamage), "Argument #1")
 		Assert.Equals("userdata", type(pawn), "Argument #2")
 
-		local spaceDamageCopy = spaceDamage
+		--local spaceDamageCopy = spaceDamage
 		if spaceDamage and spaceDamage.loc and Board:IsValid(spaceDamage.loc) and
 		   spaceDamage.iDamage and spaceDamage.iDamage ~= DAMAGE_DEATH and 
 		   Board:GetCustomTile(spaceDamage.loc) == "tosx_rocks_0.png" then
-			spaceDamageCopy.iDamage = 0
+			spaceDamage.iDamage = DAMAGE_ZERO
 		end
 		
-		return self:IsDeadlyVanilla(spaceDamageCopy, pawn)
+		return self:IsDeadlyVanilla(spaceDamage, pawn)
 	end
 end
 	
