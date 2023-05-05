@@ -17,6 +17,7 @@ local pilot = {
 --]]
 
 local function IsAbilityActive()
+	if not Board then return false end
 	local pawn = Board:GetSelectedPawn()
 	return 
 		pawn								and
