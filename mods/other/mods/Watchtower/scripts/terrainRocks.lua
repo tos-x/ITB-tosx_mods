@@ -38,9 +38,8 @@ local terrainDmgTilesQ 	= terraintile.StatusIcon.."_dmgTilesQ"
 local terrainDmgAnims 	= terraintile.StatusIcon.."_dmgAnims"
 local terrainTileImg	= terraintile.StatusIcon.."_0.png"		-- This terrain is "tosx_rocks_0.png"
 
-local function PreMission()
-	if not Board then return end
-	
+local function PreMission(mission)
+	if not Board or not mission or mission.ID == "Mission_Final" then return end
 	local curr_tileset = easyEdit.tileset:get(modApi:getCurrentTileset())
 	local terrain_chance = curr_tileset:getEnvironmentChance(TERRAIN_ROCKS, GetDifficulty())
 	
