@@ -1,5 +1,5 @@
 
-local VERSION = "1.0.2"
+local VERSION = "1.0.3"
 local PREFIX = "_custom_anim_%s_"
 local PREFIX_ANIM = string.format(PREFIX, "1")
 local EVENTS = {
@@ -79,7 +79,7 @@ end
 
 
 local function rem(self, loc, animId, suffix)
-	mission = GetCurrentMission()
+	local mission = GetCurrentMission()
 	if not mission then return end
 
 	Assert.Equals('table', type(self), "Check for . vs :")
@@ -116,7 +116,7 @@ end
 
 
 local function get(self, loc, animId, suffix)
-	mission = GetCurrentMission()
+	local mission = GetCurrentMission()
 	if not mission then return end
 
 	Assert.Equals('table', type(self), "Check for . vs :")
