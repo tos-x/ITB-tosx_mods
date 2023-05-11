@@ -22,7 +22,7 @@ local terraintile = {
 	StatusIcon = "tosx_rocks",
 	DamageAnim = "tosx_terrain_anim",
 	DamageFunction = "tosx_RocksCrumble",
-	TileTooltip = {"Rocks", "The next damage on this tile is negated."},
+	TileTooltip = {"Rock Tile", "The next damage on this tile is negated."},
 	StatusTooltip = {"On Rocks", "This tile will negate the next damage to it, protecting this unit."},
 	MaxTiles = 10,
 	}
