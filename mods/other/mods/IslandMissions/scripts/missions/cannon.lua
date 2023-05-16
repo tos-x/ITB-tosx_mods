@@ -16,16 +16,29 @@ Mission_tosx_Cannon = Mission_Infinite:new{
 function Mission_tosx_Cannon:StartMission()
 	local cannon = PAWN_FACTORY:CreatePawn(self.CannonPawn)
 	Board:AddPawn(cannon)
+	cannon:SetTeam(TEAM_ENEMY)
 	self.Target = cannon:GetId()
 end
 
 function Mission_tosx_Cannon:NextTurn()
+	if Game:GetTeamTurn() ~= TEAM_ENEMY then return end
 	self.Attacks = {}	
 	
 	local quarters = Environment:GetQuarters()	
 	for i,v in ipairs(quarters) do
-		self.Attacks[#self.Attacks + 1] = random_removal(v)
-		self.Attacks[#self.Attacks + 1] = random_removal(v)
+		for j = 1,2 do
+			local choice = Point(-1,-1)
+			while not Board:IsValid(choice) and #v > 0 do
+				-- Don't target the turret itself
+				choice = random_removal(v)
+				if Board:IsPawnSpace(choice) and Board:GetPawn(choice):GetId() == self.Target then
+					choice = Point(-1,-1)
+				end
+			end
+			if Board:IsValid(choice) then
+				self.Attacks[#self.Attacks + 1] = choice
+			end
+		end
 	end
 end
 
@@ -50,7 +63,7 @@ tosx_MissileTurret = Pawn:new{
 	Name = " Missile Turret",
 	Health = 2,
 	Neutral = true,
-	Image = "tosx_MissileTurret", --!!!
+	Image = "tosx_MissileTurret",
 	MoveSpeed = 0,
 	SkillList = { "tosx_MissileTurretFire" },
 	DefaultTeam = TEAM_NONE, --make it go first
@@ -59,6 +72,7 @@ tosx_MissileTurret = Pawn:new{
 	SoundLocation = "/support/train",
 	Pushable = false,
 	SpaceColor = false,
+	Minor = true,
 	IsPortrait = false,
 }
 tosx_MissileTurretFire = Skill:new{
