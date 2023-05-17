@@ -1,4 +1,4 @@
-local VERSION = "0.0.3"
+local VERSION = "0.0.4"
 
 -- This code populates missions with Rocks terrain tiles, based on tileset chance
 -- These tiles negate the first damage to them, then disappear
@@ -20,7 +20,7 @@ local weaponArmed = require(path .."libs/weaponArmed")
 	
 local terraintile = {
 	StatusIcon = "tosx_rocks",
-	DamageAnim = "tosx_terrain_anim",
+	DamageAnim = "tosx_rocks_icona",
 	DamageFunction = "tosx_RocksCrumble",
 	TileTooltip = {"Rock Tile", "The next damage on this tile is negated."},
 	StatusTooltip = {"On Rocks", "This tile will negate the next damage to it, protecting this unit."},
@@ -96,10 +96,12 @@ local function MissionUpdate(mission)
 	end	
 end
 
-local function DamageCustomTile(point)
-	if Board:GetCustomTile(point) == terrainTileImg then
+local function DamageCustomTile(point,dmg)
+	if Board:GetCustomTile(point) == terrainTileImg and
+	   dmg > 0 then
 		if not Board:IsPawnSpace(point) then return true end
 		-- It is a pawn
+		if dmg == DAMAGE_DEATH then return true end
 		if Board:GetPawn(point):IsFrozen() then return false end
 		if Board:GetPawn(point):IsShield() then return false end
 		return true
@@ -117,8 +119,7 @@ local function IterateEffects(effect, queued)
 	if not queued then mission[terrainAnimStart] = nil end
 	
 	for _, spaceDamage in ipairs(extract_table(effect)) do
-		if DamageCustomTile(spaceDamage.loc) and
-		   spaceDamage.iDamage > 0 then
+		if DamageCustomTile(spaceDamage.loc, spaceDamage.iDamage) then
 		   
 			-- Adjust damage/show anim only if it's not lethal
 			if spaceDamage.iDamage ~= DAMAGE_DEATH then
@@ -153,7 +154,7 @@ local function IterateQueuedEffects(effect, pawnid)
 	mission[terrainDmgTilesQ] = mission[terrainDmgTilesQ] or {}
 	mission[terrainDmgTilesQ][pawnid] = {}
 	for _, spaceDamage in ipairs(extract_table(effect)) do
-		if DamageCustomTile(spaceDamage.loc) and spaceDamage.iDamage > 0 then
+		if DamageCustomTile(spaceDamage.loc, spaceDamage.iDamage) then
 			-- Adjust damage/show anim only if it's not lethal
 			if spaceDamage.iDamage ~= DAMAGE_DEATH then
 				-- Set dmg to zero
@@ -357,7 +358,7 @@ local function onModsInitialized()
 	-- Set our terrain tooltip
 	TILE_TOOLTIPS[terrainTip] = terraintile.TileTooltip
 	
-	ANIMS.tosx_terrain_anim = Animation:new{
+	ANIMS.tosx_rocks_icona = Animation:new{
 		Image = "combat/icons/icon_tosx_rocks_anim.png",
 		PosX = -13, PosY = 22,
 		Time = 0.15,
@@ -380,20 +381,19 @@ end
 -- Override Board:IsDeadly to prevent death effects on rocks
 -- Shouldn't interfere with other mods that also override this
 local function onBoardClassInitialized(BoardClass, board)	
-	BoardClass.IsDeadlyVanilla = board.IsDeadly
+	local IsDeadlyVanilla = board.IsDeadly
 	BoardClass.IsDeadly = function(self, spaceDamage, pawn)
 		Assert.Equals("userdata", type(self), "Argument #0")
 		Assert.Equals("userdata", type(spaceDamage), "Argument #1")
 		Assert.Equals("userdata", type(pawn), "Argument #2")
 
-		--local spaceDamageCopy = spaceDamage
 		if spaceDamage and spaceDamage.loc and Board:IsValid(spaceDamage.loc) and
 		   spaceDamage.iDamage and spaceDamage.iDamage ~= DAMAGE_DEATH and 
 		   Board:GetCustomTile(spaceDamage.loc) == "tosx_rocks_0.png" then
-			spaceDamage.iDamage = DAMAGE_ZERO
+			local spaceDamageCopy = SpaceDamage(spaceDamage.loc, DAMAGE_ZERO, spaceDamage.iPush)
+			return IsDeadlyVanilla(self, spaceDamageCopy, pawn)
 		end
-		
-		return self:IsDeadlyVanilla(spaceDamage, pawn)
+		return IsDeadlyVanilla(self, spaceDamage, pawn)
 	end
 end
 	
