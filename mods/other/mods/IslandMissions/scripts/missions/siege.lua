@@ -381,6 +381,7 @@ function this:load(mod, options, version)
 	    "pinnacle",
 	    "detritus",
 		"Watchtower",
+		"FarLine",
 	}
 	
 	-- Add to all 4 default corp slots
