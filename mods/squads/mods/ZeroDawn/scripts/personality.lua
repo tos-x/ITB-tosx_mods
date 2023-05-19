@@ -231,4 +231,28 @@ return {
 	Mission_tosx_RigUpgraded = {
 		"I see. They're scavenging components from those dead machines, to improve their own.",
 	},
+	
+	--Far Line
+	Mission_tosx_Delivery_Destroyed = {
+		"Those supplies didn't make it.",
+		"What a waste.",
+	},
+	Mission_tosx_Sub_Destroyed = {
+		"Our underwater friend didn't make it.",
+		"That machine just went down.",
+	},
+	Mission_tosx_Buoy_Destroyed = {
+		"That navigation marker just sank.",
+		"That marker just went down.",
+	},
+	Mission_tosx_Rigship_Destroyed = {
+		"Our swimming friend didn't make it.",
+		"That machine just went down.",
+	},
+	Mission_tosx_SpillwayOpen = {
+		"Looks like water's about to start flowing.",
+	},
+	Mission_tosx_OceanStart = {
+		"Well, this is a new way to fight. I hope my machine can handle it.",
+	},
 }

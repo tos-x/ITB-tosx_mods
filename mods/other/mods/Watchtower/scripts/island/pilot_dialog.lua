@@ -578,6 +578,30 @@ return {
 		"Watchtower is always trying to build better weapons. And they're succeeding!",
 	},
 	
+	--Far Line missions
+	Mission_tosx_Delivery_Destroyed = {
+		"Doesn't look like we can salvage those crates, commander.",
+		"Lost the shipment.",
+	},
+	Mission_tosx_Sub_Destroyed = {
+		"Doesn't look like we can salvage that submarine, commander.",
+		"Lost the attack sub.",
+	},
+	Mission_tosx_Buoy_Destroyed = {
+		"Doesn't look like we can salvage that buoy, commander.",
+		"Lost one of the buoys.",
+	},
+	Mission_tosx_Rigship_Destroyed = {
+		"Doesn't look like we can salvage that ship, commander.",
+		"Lost the construction ship.",
+	},
+	Mission_tosx_SpillwayOpen = {
+		"Manual override engaged. Spillway hatch is open.",
+	},
+	Mission_tosx_OceanStart = {
+		"Not much like Watchtower, this place.",
+		"I don't like the look of this at all.",
+	},
 }
 
 	
