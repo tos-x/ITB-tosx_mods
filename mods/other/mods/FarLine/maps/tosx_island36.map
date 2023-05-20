@@ -37,6 +37,7 @@ tosx_island36 = {["version"] = 7, ["dimensions"] = Point( 8, 8 ), ["name"] = "to
 ["spawn_ids"] = {},
 ["spawn_points"] = {},
 ["zones"] = {["tosx_oilrig"] = {Point( 7, 6 ), Point( 7, 2 ), Point( 7, 1 ), Point( 6, 0 ), Point( 0, 6 ), Point( 1, 7 ), },
+["buoy"] = {Point( 7, 5 ), Point( 6, 2 ), Point( 6, 1 ), Point( 1, 6 ), },
 },
 ["tags"] = {"any_sector", "tosx_oilrig", "tosx_continent", "tosx_island", "tosx_buoy", },
 ["blocked_points"] = {},
