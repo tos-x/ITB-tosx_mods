@@ -95,8 +95,10 @@ end
 
 local onSkillEffectFinal = function(skillEffect)
 	if not skillEffect then return end
+	local queued = not skillEffect.q_effect:empty()
+	
 	local pawnids = IterateEffects(skillEffect.effect)	
-	if next(pawnids,nil) then
+	if not queued and next(pawnids,nil) then
 		for id, p in pairs(pawnids) do
 			skillEffect:AddScript([[
 				if PawnKilledLoc and PawnKilledLoc.Wait then
