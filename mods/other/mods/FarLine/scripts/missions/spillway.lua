@@ -53,7 +53,7 @@ function Mission_tosx_Spillway:UpdateMission()
 	for i = 1, #self.VentLocs do
 		local p = self.VentLocs[i]
 		if Board:GetCustomTile(p) == "tosx_vent_closed.png" and Board:GetTerrain(p) == TERRAIN_ROAD then
-			if Board:IsPawnSpace(p) and Board:GetPawnTeam(p) == TEAM_PLAYER and not Board:IsBusy() then
+			if Board:IsPawnSpace(p) and Board:GetPawnTeam(p) == TEAM_PLAYER and not Board:IsBusy() and Game:GetTurnCount() > 0 then
 				Board:SetCustomTile(p, "tosx_vent_open.png")
 				self.Open = self.Open + 1
 				self.VentPawns = self.VentPawns or {}
@@ -67,8 +67,7 @@ function Mission_tosx_Spillway:UpdateMission()
 					effect:AddVoice("Mission_tosx_SpillwayOpen", cast)
 					timer = 500
 				end
-				Board:AddEffect(effect)	
-	
+				Board:AddEffect(effect)		
 			else
 				Board:MarkSpaceDesc(p,"tosx_env_spillway_tile")
 			end
