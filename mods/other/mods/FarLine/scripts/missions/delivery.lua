@@ -123,7 +123,7 @@ end
 function Mission_tosx_Delivery:GetCompletedObjectives()
 	local ret = copy_table(self.Objectives)
 	ret[1] = objAfterMission1:case(countAlive(self.Criticals))
-	ret[2] = objAfterMission2:case(self:Delivered())
+	ret[2] = objAfterMission2:case(self:Delivered() == 2 and 1 or 0)
 	return ret
 end
 
