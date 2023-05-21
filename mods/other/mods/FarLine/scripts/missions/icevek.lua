@@ -16,8 +16,9 @@ Mission_tosx_IceVek = Mission_Infinite:new{
 	MapTags = {"tosx_smallisland"},
 	Objectives = Objective("Kill the Cryo Vek",1,1),
 	Target = 0,
-	BonusPool = copy_table(missionTemplates.bonusAll),
+	BonusPool = copy_table(missionTemplates.bonusNoDebris),
 	UseBonus = true,
+	SpawnStartMod = -1,
 }
 
 -- Add CEO dialog

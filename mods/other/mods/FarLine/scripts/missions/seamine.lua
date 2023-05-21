@@ -6,7 +6,7 @@ local missionTemplates = require(path .."missions/missionTemplates")
 Mission_tosx_Seamine = Mission_Infinite:new{
 	Name = "Sea Mines",
 	MapTags = {"tosx_smallisland", "tosx_bigisland", "tosx_continent"},
-	BonusPool = copy_table(missionTemplates.bonusNoMercy),
+	BonusPool = copy_table(missionTemplates.bonusNoMercyOrDebris),
 	UseBonus = true,
 	MineCount = 4,
 }

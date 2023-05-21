@@ -34,6 +34,21 @@ local this = {
 		BONUS_SELFDAMAGE,
 		BONUS_PACIFIST,
 		},
+	bonusNoDebris = { 
+		BONUS_GRID,
+		BONUS_MECHS,
+		BONUS_BLOCK,
+		BONUS_KILL_FIVE,
+		BONUS_SELFDAMAGE,
+		BONUS_PACIFIST,
+		},
+	bonusNoMercyOrDebris = { 
+		BONUS_GRID,
+		BONUS_MECHS,
+		BONUS_BLOCK,
+		BONUS_KILL_FIVE,
+		BONUS_SELFDAMAGE,
+		},
 }
 
 return this
