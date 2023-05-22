@@ -4,6 +4,7 @@ local path = mod.scriptPath
 local missionTemplates = require(path .."missions/missionTemplates")
 local switch = require(path .."libs/switch")
 require(mod.scriptPath.."libs/pawnKilledLoc")
+require(mod.scriptPath.. "libs/swimmingIcon")
 
 local objInMission1 = switch{
 	[0] = function()
@@ -233,8 +234,6 @@ function tosx_sub1_swim_skill:GetSkillEffect(p1, p2)
 end
 
 ---------------------
-
-require(mod.scriptPath.. "libs/swimmingIcon")
 
 modApi:appendAsset("img/units/mission/tosx_sub1.png", mod.resourcePath .."img/units/mission/sub1.png")
 modApi:appendAsset("img/units/mission/tosx_sub1_ns.png", mod.resourcePath .."img/units/mission/sub1_ns.png")

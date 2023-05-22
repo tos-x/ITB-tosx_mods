@@ -38,7 +38,7 @@ tosx_smallisland13 = {["version"] = 7, ["dimensions"] = Point( 8, 8 ), ["name"] 
 ["spawn_ids"] = {},
 ["spawn_points"] = {},
 ["zones"] = {["deployment"] = {Point( 6, 5 ), Point( 6, 4 ), Point( 6, 3 ), Point( 6, 2 ), Point( 7, 2 ), Point( 7, 3 ), Point( 7, 4 ), Point( 6, 6 ), Point( 7, 6 ), Point( 7, 1 ), Point( 6, 1 ), Point( 5, 4 ), Point( 5, 3 ), Point( 5, 6 ), Point( 5, 5 ), },
-["enemy"] = {Point( 4, 1 ), Point( 5, 1 ), Point( 5, 2 ), Point( 4, 2 ), Point( 3, 2 ), Point( 3, 5 ), Point( 4, 5 ), Point( 4, 6 ), Point( 3, 6 ), Point( 4, 0 ), Point( 3, 0 ), },
+["enemy"] = {Point( 4, 1 ), Point( 5, 1 ), Point( 5, 2 ), Point( 4, 2 ), Point( 3, 2 ), Point( 3, 5 ), Point( 4, 5 ), Point( 4, 6 ), Point( 3, 6 ), Point( 3, 3 ), Point( 3, 4 ), },
 },
 ["tags"] = {"any_sector", "tosx_smallisland", "tosx_island", },
 ["blocked_points"] = {},

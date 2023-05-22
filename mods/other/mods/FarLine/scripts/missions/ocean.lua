@@ -5,6 +5,7 @@ local switch = require(path .."libs/switch")
 local astar = require(path .."libs/astar")
 local worldConstants = require(path .."libs/worldConstants")
 local utils = require(path .."libs/utils")
+require(mod.scriptPath.. "libs/swimmingIcon")
 
 -- returns number of pawns alive
 -- in a list of pawn id's.
@@ -391,8 +392,6 @@ function tosx_rigship_swim_skill:GetSkillEffect(p1, p2)
 end
 
 ---------------------
-
-require(mod.scriptPath.. "libs/swimmingIcon")
 
 modApi:appendAsset("img/units/mission/tosx_rigship.png", mod.resourcePath .."img/units/mission/rigship.png")
 modApi:appendAsset("img/units/mission/tosx_rigship_ns.png", mod.resourcePath .."img/units/mission/rigship_ns.png")

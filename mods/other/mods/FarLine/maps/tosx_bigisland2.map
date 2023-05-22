@@ -26,7 +26,6 @@ tosx_bigisland2 = {["version"] = 7, ["dimensions"] = Point( 8, 8 ), ["name"] = "
 {["loc"] = Point( 3, 5 ), ["terrain"] = 3, },
 {["loc"] = Point( 3, 7 ), ["terrain"] = 3, },
 {["loc"] = Point( 4, 0 ), ["terrain"] = 3, },
-{["loc"] = Point( 4, 3 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
 {["loc"] = Point( 4, 4 ), ["terrain"] = 1, ["populated"] = 1, ["health_max"] = 4, },
 {["loc"] = Point( 5, 7 ), ["terrain"] = 3, },
 {["loc"] = Point( 6, 1 ), ["terrain"] = 4, },
