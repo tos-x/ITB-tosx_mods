@@ -27,7 +27,7 @@ tosx_delivery6 = {["version"] = 7, ["dimensions"] = Point( 8, 8 ), ["name"] = "t
 ["spawns"] = {},
 ["spawn_ids"] = {},
 ["spawn_points"] = {},
-["zones"] = {["target"] = {Point( 3, 4 ), Point( 4, 2 ), },
+["zones"] = {["target"] = {Point( 3, 5 ), Point( 4, 3 ), },
 },
 ["tags"] = {"any_sector", "tosx_island", "tosx_delivery", },
 ["blocked_points"] = {},
