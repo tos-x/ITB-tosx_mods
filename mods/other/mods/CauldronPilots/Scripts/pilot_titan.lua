@@ -56,7 +56,7 @@ local function IterateEffects(effect)
 			local point = spaceDamage:MoveStart()
 			local point2 = spaceDamage:MoveEnd()
 			if vIsPawnSpace(point) then
-				local id = Board:GetPawn(point):GetId()
+				local id = vGetPawn(point):GetId()
 				virtual[p2idx(point)] = -1 --Space is now empty
 				virtual[p2idx(point2)] = id -- Pawn "id" is now here
 			end
