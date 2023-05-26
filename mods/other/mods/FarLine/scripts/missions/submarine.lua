@@ -101,6 +101,18 @@ function Mission_tosx_Submarine:GetCompletedObjectives()
 	return ret
 end
 
+function Mission_tosx_Submarine:GetCompletedStatus()
+	if self:IsSubAlive() and self.Drown >= 4 then
+		return "Success"
+	elseif self:IsSubAlive() and self.Drown < 4 then
+		return "Sub"
+	elseif not self:IsSubAlive() and self.Drown >= 4 then
+		return "Water"
+	else
+		return "Failure"
+	end
+end
+
 local submove = 3
 tosx_mission_sub1 = Pawn:new{
 	Name = "Submarine",
