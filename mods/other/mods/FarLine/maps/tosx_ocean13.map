@@ -68,6 +68,7 @@ tosx_ocean13 = {["version"] = 7, ["dimensions"] = Point( 8, 8 ), ["name"] = "tos
 ["spawn_ids"] = {},
 ["spawn_points"] = {},
 ["zones"] = {},
+["pod"] = Point(5,7),
 ["tags"] = {"any_sector", "tosx_ocean", "tosx_island", },
 ["blocked_points"] = {},
 ["blocked_type"] = {},

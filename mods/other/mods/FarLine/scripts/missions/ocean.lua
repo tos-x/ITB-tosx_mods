@@ -56,6 +56,7 @@ Mission_tosx_Ocean = Mission_Infinite:new{
 	VekCount = 3,
 	Fliers = nil,
 	GlobalSpawnMod = -10,
+	BlockSecret = true,
 }
 
 -- Add CEO dialog
