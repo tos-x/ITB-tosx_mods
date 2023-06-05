@@ -84,6 +84,7 @@ function Mission_tosx_Delivery:StartMission()
 	local choice2 = random_removal(options)
 	self.Target = choice2
 	Board:SetCustomTile(choice2,"tosx_receiving.png")
+	Board:BlockSpawn(choice2,BLOCKED_PERM)
 	
 	local place = {}
 	local copter = PAWN_FACTORY:CreatePawn("tosx_cargocopter1")
