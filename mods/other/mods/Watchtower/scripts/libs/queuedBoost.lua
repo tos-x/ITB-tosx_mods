@@ -1,5 +1,5 @@
 
-local VERSION = "0.0.1"
+local VERSION = "0.0.2"
 
 local function SkillBuild(mission, pawn, weaponId, p1, p2, skillEffect)
 	if not skillEffect or not pawn then return end
@@ -14,7 +14,7 @@ local function SkillBuild(mission, pawn, weaponId, p1, p2, skillEffect)
 	end
 end
 
-local function QueuedSkillEnd(mission, pawn, weaponId, p1, p2)
+local function QueuedSkillStart(mission, pawn, weaponId, p1, p2)
 	if not pawn then return end
 	if not pawn:IsMutation(LEADER_BOOSTED) then
 		pawn:SetBoosted(false)
@@ -23,7 +23,7 @@ end
 
 local function onModsLoaded()
 	modapiext:addSkillBuildHook(SkillBuild)
-	modapiext:addQueuedSkillEndHook(QueuedSkillEnd)
+	modapiext:addQueuedSkillStartHook(QueuedSkillStart)
 end
 
 
