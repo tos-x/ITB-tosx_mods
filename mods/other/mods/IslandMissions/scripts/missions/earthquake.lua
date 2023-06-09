@@ -24,6 +24,8 @@ tosx_env_quake = Env_Attack:new{
 }
 
 function tosx_env_quake:MarkSpace(space, active)
+	Board:BlockSpawn(space,BLOCKED_TEMP)
+	
 	Board:MarkSpaceImage(space,self.CombatIcon, GL_Color(255,226,88,0.75))
 	Board:MarkSpaceDesc(space,"tosx_env_quake_tile", EFFECT_DEADLY)
 	
@@ -74,7 +76,7 @@ function tosx_env_quake:SelectSpaces()
 			end
 			
 			ret[#ret+1] = choice
-			Board:BlockSpawn(choice,BLOCKED_TEMP)
+			--Board:BlockSpawn(choice,BLOCKED_TEMP)
 		end
 	end
 	
