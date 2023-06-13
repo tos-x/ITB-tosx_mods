@@ -13,6 +13,7 @@ trait:add{
 	}
 	
 Mission_tosx_IceVek = Mission_Infinite:new{
+	Name = "Cryo Vek",
 	MapTags = {"tosx_smallisland"},
 	Objectives = Objective("Kill the Cryo Vek",1,1),
 	Target = 0,
