@@ -1,4 +1,4 @@
-local VERSION = "0.0.1"
+local VERSION = "0.0.2"
 
 -- This code populates missions with Whirlpool terrain tiles, based on tileset chance
 -- These tiles turn any damage on them into lethal damage, then go away
@@ -88,41 +88,40 @@ end
 local function MissionUpdate(mission)
 	-- First update, replace units with anims
 	if not mission.tosx_whirlpools then
-		mission.tosx_whirlpools = true
+		mission.tosx_whirlpools = {}
 		local pawns = extract_table(Board:GetPawns(TEAM_ANY))
 		for i,id in pairs(pawns) do
 			if Board:GetPawn(id):GetType() == "tosx_whirlpooldummy" then
 				local p = Board:GetPawnSpace(id)
 				Board:RemovePawn(Board:GetPawn(id))
 				customAnim:add(p, terraintile.TileAnim)
+				mission.tosx_whirlpools[#mission.tosx_whirlpools + 1] = p
 			end
 		end
 	end
-
+	
 	-- Set the space description and terrain icon each update	
-	for i = 0,7 do
-		for j = 0,7 do
-			local p = Point(i,j)
-			if customAnim:get(p, terraintile.TileAnim) then
-				if Board:GetTerrain(p) ~= TERRAIN_WATER or
-				   Board:IsAcid(p) or
-				   Board:GetCustomTile(p) ~= terrainTileImg or
-				   Board:IsTerrain(p,TERRAIN_LAVA) then
-					-- Our custom terrain should be cleared
-					if Board:GetCustomTile(p) == terrainTileImg then
-						-- Only using this for mission end; but a mod could
-						-- have changed custom tile on us
-						Board:SetCustomTile(p,"")
-					end
-					Board:SetTerrainIcon(p,"")
-					customAnim:rem(p, terraintile.TileAnim)
-				else
-					-- Don't use Board:MarkSpaceDesc, since environment effects need it
-					Board:SetTerrainIcon(p,terraintile.StatusIcon)
+	if #mission.tosx_whirlpools > 0 then
+		for i, p in pairs(mission.tosx_whirlpools) do
+			if Board:GetTerrain(p) ~= TERRAIN_WATER or
+			   Board:IsAcid(p) or
+			   Board:GetCustomTile(p) ~= terrainTileImg or
+			   Board:IsTerrain(p,TERRAIN_LAVA) then
+				-- Our custom terrain should be cleared
+				if Board:GetCustomTile(p) == terrainTileImg then
+					-- Only using this for mission end; but a mod could
+					-- have changed custom tile on us
+					Board:SetCustomTile(p,"")
 				end
+				Board:SetTerrainIcon(p,"")
+				customAnim:rem(p, terraintile.TileAnim)
+				mission.tosx_whirlpools[i] = nil
+			else
+				-- Don't use Board:MarkSpaceDesc, since environment effects need it
+				Board:SetTerrainIcon(p,terraintile.StatusIcon)
 			end
 		end
-	end	
+	end
 end
 
 
@@ -429,6 +428,8 @@ local function onModsInitialized()
 		DefaultTeam = TEAM_PLAYER,
 		IsPortrait = false,
 	}
+	
+	sdlext.addFrameDrawnHook(FrameDrawn)
 
 end
 
@@ -460,7 +461,6 @@ local function onModsLoaded()
 	modApi:addPreMissionAvailableHook(PreMission)
 	modApi:addMissionEndHook(MissionEnd)
 	modApi:addMissionUpdateHook(MissionUpdate)
-	sdlext.addFrameDrawnHook(FrameDrawn)
 	
 	modapiext:addSkillBuildHook(onSkillEffect)
 	modapiext:addFinalEffectBuildHook(onSkillEffect2)
