@@ -79,10 +79,14 @@ function tosx_sat_rst_w:GetFinalEffect(p1, p2, p3)
 	
 	local damage = SpaceDamage(curr)
 	damage.iTerrain = TERRAIN_HOLE
-	for i = 0,self.Range-1 do		
-		damage.loc = curr
+	for i = 0,self.Range-1 do
 		ret:AddSound("/support/terraformer/attack_first")
-		ret:AddDamage(damage)
+		if Board:IsBuilding(curr) then
+			ret:AddDamage(SpaceDamage(curr,DAMAGE_DEATH))
+		else
+			damage.loc = curr
+			ret:AddDamage(damage)
+		end
 		ret:AddDelay(0.5)
 		
 		curr = curr + change2
