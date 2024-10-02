@@ -196,7 +196,7 @@ function tosx_Cargocopter_Attack:GetTargetArea(point)
 			range = range + 1
 		end
 		
-		if Board:IsValid(target) and target:Manhattan(point) > 1 then
+		if Board:IsValid(target) and range > 0 and Board:IsBlocked(target, PATH_PROJECTILE) then
 			this_path[#this_path+1] = target
 			for i,v in ipairs(this_path) do 
 				ret:push_back(v)
