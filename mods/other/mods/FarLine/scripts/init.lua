@@ -1,7 +1,7 @@
 local mod = {
 	id = "tosx_farline",
 	name = "Far Line Charters",
-	version = "0.0.3",
+	version = "0.0.4",
 	modApiVersion = "2.9.2",
 	icon = "img/icon.png",
 	requirements = {"tosx_island_missons"},

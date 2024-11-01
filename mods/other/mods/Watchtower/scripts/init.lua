@@ -1,7 +1,7 @@
 local mod = {
 	id = "tosx_watchtower",
 	name = "Watchtower Security",
-	version = "0.0.4",
+	version = "0.0.5",
 	modApiVersion = "2.9.2",
 	icon = "img/icon.png",
 	requirements = {"tosx_island_missons"},
