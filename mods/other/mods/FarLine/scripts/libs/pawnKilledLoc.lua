@@ -204,7 +204,7 @@ local function onBoardAddEffect(skillEffect)
 end
 
 local function onAttackStart(mission, pawn, weaponId, p1, p2)
-	LOG("attack start")
+	--LOG("attack start")
 	for i,w in pairs(wepexceptions) do
 		if weaponId == w then return end
 	end
