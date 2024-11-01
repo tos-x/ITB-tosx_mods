@@ -24,7 +24,8 @@ tosx_env_siege = Environment:new{
 
 local function IsCorp()
 	-- Returns string: Pinnacle, RST, Detritus, Archive
-	return GetText(Game:GetCorp().bark_name)
+	LOG("---"..GetText(Game:GetCorp().name))
+	return GetText(Game:GetCorp().name)
 end
 
 function Mission_tosx_Siege:CountCrates()
@@ -90,18 +91,24 @@ function Mission_tosx_Siege:GetCompletedStatus()
 end
 
 function Mission_tosx_Siege:StartMission()
-	if IsCorp() == "Pinnacle" then
+	if IsCorp() == "Pinnacle Robotics" then
 		_G["tosx_Siege01"].ImageOffset = 6
 		_G["tosx_Siege02"].ImageOffset = 6
-	elseif IsCorp() == "Detritus" then
+	elseif IsCorp() == "Detritus Disposal" then
 		_G["tosx_Siege01"].ImageOffset = 7
 		_G["tosx_Siege02"].ImageOffset = 7
-	elseif IsCorp() == "RST" then
+	elseif IsCorp() == "R.S.T. Corporation" then
 		_G["tosx_Siege01"].ImageOffset = 1
 		_G["tosx_Siege02"].ImageOffset = 1
-	elseif IsCorp() == "Archive" then
+	elseif IsCorp() == "Archive, Inc." then
 		_G["tosx_Siege01"].ImageOffset = 0
 		_G["tosx_Siege02"].ImageOffset = 0
+	elseif IsCorp() == "Far Line Charters" then
+		_G["tosx_Siege01"].ImageOffset = 2
+		_G["tosx_Siege02"].ImageOffset = 2
+	elseif IsCorp() == "Watchtower Security" then
+		_G["tosx_Siege01"].ImageOffset = 4
+		_G["tosx_Siege02"].ImageOffset = 4
 	else -- catchall for mod corps; Archive color
 		_G["tosx_Siege01"].ImageOffset = 0
 		_G["tosx_Siege02"].ImageOffset = 0
