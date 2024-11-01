@@ -279,15 +279,25 @@ local function ShowTerrainAnimQ()
 	return false
 end
 
+local waterTitle = ""
+local waterText = ""
+
 local onTileHighlighted = function(mission, point)	
 	-- Override ground tile tooltip when highlighting Whirlpools
 	-- Board:MarkSpaceDesc is used by environment effects and could conflict
-		if Board:IsValid(point) and Board:GetTerrain(point) == TERRAIN_WATER and Board:GetCustomTile(point) == terrainTileImg then	   
+	if Board:IsValid(point) and Board:GetTerrain(point) == TERRAIN_WATER and Board:GetCustomTile(point) == terrainTileImg then
+		waterTitle = modApi.modLoaderDictionary["Tile_water_Title"]
+		waterText = modApi.modLoaderDictionary["Tile_water_Text"]
+		
 		modApi.modLoaderDictionary["Tile_water_Title"] = terraintile.TileTooltip[1]
-		modApi.modLoaderDictionary["Tile_water_Text"] = terraintile.TileTooltip[2]		
-	else
-		modApi.modLoaderDictionary["Tile_water_Title"] = nil
-		modApi.modLoaderDictionary["Tile_water_Text"] = nil		
+		modApi.modLoaderDictionary["Tile_water_Text"] = terraintile.TileTooltip[2]	
+	end
+end
+
+local onTileUnhighlighted = function(mission, point)
+	if Board:IsValid(point) and Board:GetTerrain(point) == TERRAIN_WATER and Board:GetCustomTile(point) == terrainTileImg then	   
+		modApi.modLoaderDictionary["Tile_water_Title"] = waterTitle
+		modApi.modLoaderDictionary["Tile_water_Text"] = waterText
 	end
 end
 
@@ -465,6 +475,7 @@ local function onModsLoaded()
 	modapiext:addSkillBuildHook(onSkillEffect)
 	modapiext:addFinalEffectBuildHook(onSkillEffect2)
 	modapiext:addTileHighlightedHook(onTileHighlighted)
+	modapiext:addTileUnhighlightedHook(onTileUnhighlighted)
 end
 	
 modApi.events.onModsInitialized:subscribe(onModsInitialized)

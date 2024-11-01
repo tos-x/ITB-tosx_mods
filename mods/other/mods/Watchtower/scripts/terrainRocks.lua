@@ -258,15 +258,28 @@ local function ShowTerrainAnimQ()
 	return false
 end
 
-local onTileHighlighted = function(mission, point)	
+
+local groundTitle = ""
+local groundText = ""
+--local waterText = ""
+
+local onTileHighlighted = function(mission, point)
 	-- Override ground tile tooltip when highlighting Rocks
 	-- Board:MarkSpaceDesc is used by environment effects and could conflict
-		if Board:IsValid(point) and Board:GetTerrain(point) == TERRAIN_ROAD and Board:GetCustomTile(point) == terrainTileImg then	   
+	if Board:IsValid(point) and Board:GetTerrain(point) == TERRAIN_ROAD and Board:GetCustomTile(point) == terrainTileImg then	
+		-- save old text
+		groundTitle = modApi.modLoaderDictionary["Tile_ground_Title"]
+		groundText = modApi.modLoaderDictionary["Tile_ground_Text"]
+		
 		modApi.modLoaderDictionary["Tile_ground_Title"] = terraintile.TileTooltip[1]
-		modApi.modLoaderDictionary["Tile_ground_Text"] = terraintile.TileTooltip[2]		
-	else
-		modApi.modLoaderDictionary["Tile_ground_Title"] = nil
-		modApi.modLoaderDictionary["Tile_ground_Text"] = nil		
+		modApi.modLoaderDictionary["Tile_ground_Text"] = terraintile.TileTooltip[2]	
+	end
+end
+
+local onTileUnhighlighted = function(mission, point)
+	if Board:IsValid(point) and Board:GetTerrain(point) == TERRAIN_ROAD and Board:GetCustomTile(point) == terrainTileImg then
+		modApi.modLoaderDictionary["Tile_ground_Title"] = groundTitle
+		modApi.modLoaderDictionary["Tile_ground_Text"] = groundText
 	end
 end
 
@@ -405,6 +418,7 @@ local function onModsLoaded()
 	modapiext:addSkillBuildHook(onSkillEffect)
 	modapiext:addFinalEffectBuildHook(onSkillEffect2)
 	modapiext:addTileHighlightedHook(onTileHighlighted)
+	modapiext:addTileUnhighlightedHook(onTileUnhighlighted)
 end
 	
 modApi.events.onModsInitialized:subscribe(onModsInitialized)
