@@ -24,7 +24,6 @@ tosx_env_siege = Environment:new{
 
 local function IsCorp()
 	-- Returns string: Pinnacle, RST, Detritus, Archive
-	LOG("---"..GetText(Game:GetCorp().name))
 	return GetText(Game:GetCorp().name)
 end
 
