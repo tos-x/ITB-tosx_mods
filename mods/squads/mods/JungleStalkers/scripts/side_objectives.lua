@@ -12,7 +12,7 @@ Reward types (defined constants):
 
 CreateStructure{
     Id = "tosx_lumbermill",
-    Name = "Ore Silo",
+    Name = "Lumber Mill",
     Path = "img/structures/",
     Image = "lumbermill",
     ImageOffset = Point(-20,-2),
