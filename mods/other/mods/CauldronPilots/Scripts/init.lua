@@ -1,7 +1,7 @@
 local mod = {
 	id = "CauldronPilots",
 	name = "Cauldron Pilots",
-	version = "1.37",
+	version = "1.38",
 	modApiVersion = "2.9.2",
 	icon = "img/icons/mod_icon.png",
 	description = "New pilots with unique abilities.",
