@@ -75,7 +75,8 @@ function this:init(mod)
 	-- Decoy
 	MalichaeSkill_Link = Skill:new{
 		Name = "Decoy",
-		Description = "Move to an adjacent tile, removing Fire, Ice, and A.C.I.D. from Mech, and leaving a Decoy for 1 turn.",
+		--Description = "Move to an adjacent tile, removing Fire, Ice, and A.C.I.D. from Mech, and leaving a Decoy for 1 turn.",
+		Description = "Move to an adjacent tile, removing Fire, Ice, and A.C.I.D. from Mech, and leaving a Decoy behind.",
 		TipImage = {
 			Unit = Point(2,3),
 			Fire = Point(2,3),
@@ -133,23 +134,23 @@ function this:init(mod)
 end
 
 function this:load()
-	modApi:addNextTurnHook(function(mission)			
-		if Game:GetTeamTurn() == TEAM_PLAYER then
-			--Malichae's holograms fade
-			local mechs = extract_table(Board:GetPawns(TEAM_PLAYER))
-			for i,id in pairs(mechs) do
-				local pawn = Board:GetPawn(id)
-				if pawn:GetType() == "HoloDecoy" then
-					Board:GetPawn(id):Kill(true)
-					local ret = SkillEffect()
-					local damage = SpaceDamage(pawn:GetSpace(),0)
-					damage.sAnimation = "PilotMalichaeUnsummon"
-					ret:AddDamage(damage)
-					Board:AddEffect(ret)
-				end
-			end
-		end
-	end)
+	-- modApi:addNextTurnHook(function(mission)			
+		-- if Game:GetTeamTurn() == TEAM_PLAYER then
+			-- --Malichae's holograms fade
+			-- local mechs = extract_table(Board:GetPawns(TEAM_PLAYER))
+			-- for i,id in pairs(mechs) do
+				-- local pawn = Board:GetPawn(id)
+				-- if pawn:GetType() == "HoloDecoy" then
+					-- Board:GetPawn(id):Kill(true)
+					-- local ret = SkillEffect()
+					-- local damage = SpaceDamage(pawn:GetSpace(),0)
+					-- damage.sAnimation = "PilotMalichaeUnsummon"
+					-- ret:AddDamage(damage)
+					-- Board:AddEffect(ret)
+				-- end
+			-- end
+		-- end
+	-- end)
 	
 	modapiext.dialog:addRuledDialog("Pilot_Skill_Malichae", {
 		Odds = 10,
