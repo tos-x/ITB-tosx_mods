@@ -11,6 +11,6 @@
  You can rename the folder if you want.
 
 # Licence
- The code uses GNU GENERAL PUBLIC LICENSE, which can be read in the file LICENCE provided.
+ The code uses GNU GENERAL PUBLIC LICENSE, which can be read in the file LICENSE provided.
 
  Images are a mixture of works by Subset Games and tosx, as well as some works found in the discord community for Into The Breach. Copyright belongs to their respective creators.
