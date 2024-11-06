@@ -185,7 +185,6 @@ tosx_mission_zapperAtk = Skill:new{
 	Name = "Discharge",
 	Description = "Generate lightning to damage a target.",
 	Damage = 2,
-	Range = 15,
 	Class = "Unique",
 	Icon = "weapons/tosx_zapper_bolt.png",
 	LaunchSound = "/support/civilian_truck/move",
@@ -204,7 +203,11 @@ function Mission_tosx_Zapper:Deactivate(i)
 end
 
 function tosx_mission_zapperAtk:GetTargetArea(p1)
-	return general_DiamondTarget(p1, self.Range)
+	local ret = PointList()	
+	for _, p in ipairs(Board) do
+		ret:push_back(p)
+	end
+	return ret
 end
 
 function tosx_mission_zapperAtk:GetSkillEffect(p1, p2)
