@@ -89,30 +89,7 @@ function Mission_tosx_Siege:GetCompletedStatus()
 	end
 end
 
-function Mission_tosx_Siege:StartMission()
-	if IsCorp() == "Pinnacle Robotics" then
-		_G["tosx_Siege01"].ImageOffset = 6
-		_G["tosx_Siege02"].ImageOffset = 6
-	elseif IsCorp() == "Detritus Disposal" then
-		_G["tosx_Siege01"].ImageOffset = 7
-		_G["tosx_Siege02"].ImageOffset = 7
-	elseif IsCorp() == "R.S.T. Corporation" then
-		_G["tosx_Siege01"].ImageOffset = 1
-		_G["tosx_Siege02"].ImageOffset = 1
-	elseif IsCorp() == "Archive, Inc." then
-		_G["tosx_Siege01"].ImageOffset = 0
-		_G["tosx_Siege02"].ImageOffset = 0
-	elseif IsCorp() == "Far Line Charters" then
-		_G["tosx_Siege01"].ImageOffset = 2
-		_G["tosx_Siege02"].ImageOffset = 2
-	elseif IsCorp() == "Watchtower Security" then
-		_G["tosx_Siege01"].ImageOffset = 4
-		_G["tosx_Siege02"].ImageOffset = 4
-	else -- catchall for mod corps; Archive color
-		_G["tosx_Siege01"].ImageOffset = 0
-		_G["tosx_Siege02"].ImageOffset = 0
-	end
-	
+function Mission_tosx_Siege:StartMission()	
 	local pawn = PAWN_FACTORY:CreatePawn("tosx_Crate1")
 	Board:AddPawn(pawn, "tosx_crate_zone1")
 	Board:SetTerrain(pawn:GetSpace(), TERRAIN_ROAD)
@@ -206,7 +183,6 @@ tosx_Siege01 = Pawn:new{
 	MoveSpeed = 3,
 	SkillList = { "tosx_Siege01Wep" },
 	Image = "tosx_MissileTank",
-	ImageOffset = 0,
 	Massive = false,
 	SoundLocation = "/support/civilian_artillery/",
 	DefaultTeam = TEAM_PLAYER,
@@ -273,7 +249,6 @@ tosx_Siege02 = Pawn:new{
 	MoveSpeed = 4,
 	SkillList = { "tosx_Siege02Wep" },
 	Image = "tosx_FireTank",
-	ImageOffset = 0,
 	Massive = false,
 	SoundLocation = "/support/civilian_artillery/",
 	DefaultTeam = TEAM_PLAYER,
