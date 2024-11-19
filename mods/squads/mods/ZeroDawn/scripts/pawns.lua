@@ -40,4 +40,5 @@ ZeroDawn_TallMech = Pawn:new{
 	ImpactMaterial = IMPACT_METAL,
 	Massive = true,
 	Armor = true,
+	LargeShield = true,
 }
