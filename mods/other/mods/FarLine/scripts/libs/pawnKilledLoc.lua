@@ -3,7 +3,7 @@
 -- 	modApiExt v1.2
 --  attackEvents.lua (Lemonymous libs)
 
-local VERSION = "0.0.1"
+local VERSION = "0.0.3"
 local EVENTS = {
 	"onFinalSpace",
 }
@@ -120,10 +120,11 @@ end
 
 local onSkillEffectFinal = function(skillEffect)
 	if not skillEffect then return end
+    local effect = not skillEffect.effect:empty()
 	local queued = not skillEffect.q_effect:empty()
 	
 	local pawnids = IterateEffects(skillEffect.effect)	
-	if not queued and next(pawnids,nil) then
+    if effect and not queued and next(pawnids,nil) then
 		for id, p in pairs(pawnids) do
 			skillEffect:AddScript([[
 				if PawnKilledLoc and PawnKilledLoc.Wait then
@@ -137,7 +138,7 @@ local onSkillEffectFinal = function(skillEffect)
 		end
 	else
 		local pawnids = IterateEffects(skillEffect.q_effect)
-		if next(pawnids,nil) then
+        if queued and next(pawnids,nil) then
 			for id, p in pairs(pawnids) do
 				skillEffect:AddQueuedScript([[
 					if PawnKilledLoc and PawnKilledLoc.Wait then
