@@ -5,7 +5,7 @@ return {
 	description = "Mods by tosx.",
 	icon = "scripts/icon.png",
 	submodFolders = {"mods/"},
-	version = "1.25",
+	version = "1.26",
 	init = function() end,
 	load = function() end
 }
