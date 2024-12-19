@@ -160,8 +160,9 @@ function Mission_tosx_Ocean:NextTurn()
 	local choices = {}	
 	for x = 4, 7 do
 		for y = 1, 6 do
-			if not Board:IsBlocked(Point(x,y),PATH_PROJECTILE) then
-				choices[#choices+1] = Point(x,y)
+            local p = Point(x,y)
+			if not Board:IsBlocked(p, PATH_PROJECTILE) and not Board:IsPod(p) then
+				choices[#choices+1] = p
 			end
 		end
 	end	
@@ -210,7 +211,6 @@ function Mission_tosx_Ocean:NextTurn()
 			fx:AddDelay(0.25)
 			fx:AddScript(string.format("Board:GetPawn(%s):SetInvisible(false)", pawnId))
 			fx:AddScript(string.format("Board:GetPawn(%s):SetTeam(TEAM_ENEMY)", pawnId))
-			--fx:AddDelay(0.25)
 			Board:AddEffect(fx)
 		end
 	end
