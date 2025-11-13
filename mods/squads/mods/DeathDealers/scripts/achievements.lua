@@ -81,7 +81,7 @@ modApi.achievements:add{
 }
 
 function tosx_gunnerUnlock()
-	axefall {
+	return {
 		unlockTitle = 'Structure Unlocked!',
 		name = 'Armory',
 		tip = 'Armory. This structure can now appear in future missions on Archive.',
