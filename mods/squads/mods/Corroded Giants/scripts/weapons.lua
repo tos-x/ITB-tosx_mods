@@ -89,7 +89,6 @@ function tosx_Prime_SteamClaw:GetSkillEffect(p1, p2)
     
         if not Board:IsTipImage() and Board:GetPawn(target1):IsMech() then
             local dist = target1:Manhattan(target2)
-            LOG("dist: "..dist)
             ret:AddScript([[
                 local mission = GetCurrentMission()
                 if mission then
