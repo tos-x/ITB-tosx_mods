@@ -48,7 +48,7 @@ local function vGetPawn(point)
 end
 -----------------------
 
-local function IterateEffects(effect)
+local function IterateEffects(effect, boosted)
 	-- Create a record of pawns that won't be where they are now
 	virtual = {}	
 	for _, spaceDamage in ipairs(extract_table(effect)) do
@@ -89,7 +89,7 @@ local function IterateEffects(effect)
 							if vIsPawnSpace(point1) then
 								if pawn:IsAbility(pilot.Skill) and not pawn:IsDead() then
 									-- This is our pawn; figure out everything happening to it that affects health
-									damagetaken = damagetaken + spaceDamage.iDamage
+									damagetaken = damagetaken + spaceDamage.iDamage + boosted
 									currenthp = pawn:GetHealth() -- Last value only; shouldn't matter
 									retpawn.space = point1 -- Last value only; shouldn't matter
 									retpawn.pushamount = retpawn.pushamount + 1
@@ -188,9 +188,9 @@ local function IterateEffects(effect)
 end
 			
 
-local onSkillEffectFinal = function(skillEffect)
+local onSkillEffectFinal = function(skillEffect, boosted)
 	if not skillEffect then return end
-	local retpawn = IterateEffects(skillEffect.effect)	
+	local retpawn = IterateEffects(skillEffect.effect, boosted)	
 	if retpawn then
 		--previewer:AddAnimation(retpawn.space, "PilotKnightHeal")--No longer works outside skillEffect/targetArea :(
 		skillEffect:AddScript([[
@@ -202,7 +202,7 @@ local onSkillEffectFinal = function(skillEffect)
 			tosx_knightskip = nil
 			]])
 	else
-		retpawn = IterateEffects(skillEffect.q_effect)
+		retpawn = IterateEffects(skillEffect.q_effect, boosted)
 		if retpawn then			
 			skillEffect:AddQueuedScript([[
 				local fx = SkillEffect();
@@ -217,15 +217,17 @@ local onSkillEffectFinal = function(skillEffect)
 end
 local onSkillEffect = function(mission, pawn, weaponId, p1, p2, skillEffect)
 	if not skillEffect then return end
-	onSkillEffectFinal(skillEffect)
+    local boosted = (pawn and pawn:IsBoosted()) and 1 or 0
+	onSkillEffectFinal(skillEffect, boosted)
 end
 local onSkillEffect2 = function(mission, pawn, weaponId, p1, p2, p3, skillEffect)
 	if not skillEffect then return end
-	onSkillEffectFinal(skillEffect)
+    local boosted = (pawn and pawn:IsBoosted()) and 1 or 0
+	onSkillEffectFinal(skillEffect, boosted)
 end
 local function onBoardAddEffect(skillEffect)
 	if not skillEffect or tosx_knightskip then return end
-	onSkillEffectFinal(skillEffect)
+	onSkillEffectFinal(skillEffect, 0)
 end
 ---
 
