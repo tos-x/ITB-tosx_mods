@@ -215,23 +215,9 @@ function tosx_sub1_swim_skill:GetSkillEffect(p1, p2)
 	local leap = PointList()
 	leap:push_back(p1)
 	leap:push_back(p2)
-	--ret:AddMove(Board:GetPath(p1, p2, Pawn:GetPathProf()), NO_DELAY)
-	--ret:AddMove(leap, NO_DELAY)
 	ret:AddLeap(leap,NO_DELAY) 
-	--ret:AddTeleport(p1,p2,NO_DELAY) 
 	ret.effect:back().bHide = true 
 	ret:AddScript(string.format("Board:GetPawn(%s):SetSpace(%s)", pawnId, p1:GetString()))
-
-	-- move pawn (use a board anim instead! setcustomanim isn't great)
-	-- ret:AddSound("/props/water_splash")
-	-- ret:AddScript(string.format([[Board:GetPawn(%s):SetCustomAnim("%s")]], pawnId, "tosx_sub1e"))
-	-- ret:AddDelay(0.5)
-	-- ret:AddScript(string.format("Board:GetPawn(%s):SetSpace(Point(-1, -1))", pawnId))
-	-- ret:AddDelay(0.05)
-	-- ret:AddScript(string.format("Board:GetPawn(%s):SetSpace(%s)", pawnId, p2:GetString()))
-	-- ret:AddScript(string.format([[Board:GetPawn(%s):SetCustomAnim("%s")]], pawnId, "tosx_sub1e2"))
-	-- ret:AddDelay(0.5)
-	-- ret:AddScript(string.format([[Board:GetPawn(%s):SetCustomAnim("%s")]], pawnId, "tosx_sub1a"))
 	
 	-- move pawn
 	ret:AddSound("/props/water_splash")
@@ -300,44 +286,11 @@ function Move:GetSkillEffect(p1, p2)
 	return originalMove.GetSkillEffect(self, p1, p2)
 end
 
------------------------
-
-local enemies = {}
-local function onPawnKilledLoc(mission, id, point)
+local function onPawnKilledLoc(mission, id, point, team)
 	if not mission or mission.ID ~= "Mission_tosx_Submarine" then return end
-	if next(enemies,nil) and enemies[id] and Board:GetTerrain(point) == TERRAIN_WATER then
-		--LOG("drown+")
-		enemies[id] = nil
+	if Board:GetTerrain(point) == TERRAIN_WATER and team == TEAM_ENEMY then
 		mission.Drown = mission.Drown + 1
 	end
 end
 
-local function onPawnKilled(mission, pawn)
-	if not mission or mission.ID ~= "Mission_tosx_Submarine" then return end
-	-- Pawns over water don't play death animations on death; do it manually. There will also be a splash from the unit dying over water
-	if pawn:GetType() == "tosx_mission_sub1" then
-		local point = pawn:GetSpace()
-		if Board:GetTerrain(point) == TERRAIN_WATER then
-			Game:TriggerSound("/impact/generic/explosion")
-			Board:AddAnimation(point, "tosx_sub1d", ANIM_NO_DELAY)
-		end
-	elseif pawn:GetTeam() == TEAM_ENEMY then
-		if PawnKilledLoc and PawnKilledLoc.Wait then
-			--LOG("wait on id ",pawn:GetId())
-			enemies[pawn:GetId()] = true
-			return
-		end
-		local point = pawn:GetSpace()
-		if Board:GetTerrain(point) == TERRAIN_WATER then
-			--LOG("drown vanilla")
-			mission.Drown = mission.Drown + 1
-		end
-	end
-end
-
-local function onModsLoaded()
-	modapiext:addPawnKilledHook(onPawnKilled)
-end
-	
-modApi.events.onModsLoaded:subscribe(onModsLoaded)
 PawnKilledLoc.onFinalSpace:subscribe(onPawnKilledLoc)
