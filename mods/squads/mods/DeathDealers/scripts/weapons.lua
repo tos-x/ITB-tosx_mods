@@ -25,7 +25,7 @@ tosx_Prime_Axes = Skill:new{
 	LaunchSound = "/weapons/sword",
 	ImpactSound = "/impact/generic/explosion_large",
 	Upgrades = 2,
-	UpgradeCost = {2, 2},
+	UpgradeCost = {2, 3},
 	TipImage = {
 		Unit = Point(2,2),
 		Target = Point(2,1),
@@ -155,7 +155,7 @@ tosx_Brute_Machinegun = Skill:new{
 	ProjectileArt = "effects/tosx_shot_bullets",
 	Explo = "ExploAir1",
 	Upgrades = 2,
-	UpgradeCost = {2, 3},
+	UpgradeCost = {2, 2},
 	TipImage = {
 		Unit = Point(2,2),
 		Target = Point(2,0),
@@ -255,7 +255,7 @@ tosx_Brute_Machinegun_A = tosx_Brute_Machinegun:new{
 }
 
 tosx_Brute_Machinegun_B = tosx_Brute_Machinegun:new{
-	UpgradeDescription = "If target is killed, next shot is lethal.",
+	UpgradeDescription = "If target is killed, next shot is lethal (but won't trigger Kill Chain).",
 	Chain = true,
 	OnKill = "Next shot lethal",
 	TipImage = {
