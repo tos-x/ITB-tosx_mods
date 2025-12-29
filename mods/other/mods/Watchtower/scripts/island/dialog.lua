@@ -118,14 +118,28 @@ return {
 		"This campaign against the Vek requires every available weapon, commander.",
 		"Nothing to salvage, even for the scavengers. Have more care, commander.",
 	},
-	--Secret_DeviceSeen_Mountain = {},
-	--Secret_DeviceSeen_Ice = {},
+	Secret_DeviceSeen_Mountain = {
+		"Commander, there's a strange signal coming from a mountain in that sector. Can your Mechs verify?",
+	},
+	Secret_DeviceSeen_Ice = {
+		"Commander, there's a strange signal coming from beneath the ice in that sector. Can your Mechs verify?",
+	},
 	--Secret_DeviceUsed = {},
-	--Secret_Arriving = {},
-	--Emerge_Detected = {},
-	--Emerge_Success = {},
+	Secret_Arriving = {
+		"What manner of Time Pod is that?",
+	},
+	Emerge_Detected = {
+		"Scanners across the region are detecting new Vek, tunneling to the surface.",
+        "More Vek, tunneling in.",
+	},
+	Emerge_Success = {
+		"More Vek just broke through to the surface.",
+        "Get those Vek off my island, commander.",
+	},
 	--Emerge_FailedMech = {},
-	--Emerge_FailedVek = {},
+	Emerge_FailedVek = {
+		"Well done, causing the Vek to run into each other. That should slow down their reinforcements.",
+	},
 
 	-- Mech State
 	--Mech_LowHealth = {},
@@ -133,7 +147,9 @@ return {
 	--Mech_Shielded = {},
 	--Mech_Repaired = {},
 	--Pilot_Level_Self = {},
-	--Pilot_Level_Obs = {},
+	Pilot_Level_Obs = {
+		"You have clearly demonstrated your competence, Pilot #main_second. You have our gratitude, and recognition.",
+	},
 	--Mech_ShieldDown = {},
 
 	-- Damage Done
@@ -164,7 +180,7 @@ return {
 		"Very good, #main_second.",
 	},
 	VekKilled_Vek = {
-		"My enemies further their own destructions.",
+		"My enemies further their own destruction.",
 		"The enemy of my enemy...",
 	},
 	
@@ -176,7 +192,7 @@ return {
 		"I commend your performance, #main_second.",
 	},
 	DoubleVekKill_Vek = {
-		"My enemies furthers their own destructions.",
+		"My enemies further their own destruction.",
 		"The enemy of my enemy...",
 		"How kind of them to aid us so.",
 	},

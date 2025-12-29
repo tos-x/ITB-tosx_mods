@@ -602,6 +602,41 @@ return {
 		"Not much like Watchtower, this place.",
 		"I don't like the look of this at all.",
 	},
+    
+-- Vertex barks
+    Mission_tosx_Scoutship_Destroyed = {
+		"Doesn't look like we can salvage that airship, commander.",
+		"Lost the scout airship.",
+    },
+    Mission_tosx_Beamtank_Destroyed = {
+		"Doesn't look like we can salvage that laser tank, commander.",
+		"Lost the beam tank.",
+    },
+    Mission_tosx_Phoenix_Destroyed = {
+		"Doesn't look like we can salvage that facility, commander.",
+		"Lost the Phoenix Project.",
+    },
+    Mission_tosx_Exosuit_Destroyed = {
+		"Doesn't look like we can salvage that exosuit, commander.",
+		"Lost one of the exosuits. Can't evac it now.",
+    },
+    Mission_tosx_Retracter_Destroyed = {
+		"Doesn't look like we can salvage that transmitter, commander.",
+		"Lost an antenna. Couldn't retract it in time.",
+    },
+    Mission_tosx_Halcyte_Destroyed = {
+        "Those crystals are too dangerous to remain intact.",
+        "Watch out, those crystals may release energy when they shatter.",
+    },
+    Mission_tosx_Retracting = {
+        "Activating safety override.",
+    },
+    Mission_tosx_MeltingDown = {
+        "Even Watchtower's nuclear reactors aren't in that sorry of a state.",
+    },
+    Mission_tosx_CrysGrowth = {
+        "Stay sharp, more of those volatile crystals are emerging.",
+    },
 }
 
 	

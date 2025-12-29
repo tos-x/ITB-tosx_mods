@@ -207,7 +207,6 @@ tosx_Rig2 = tosx_Rig1:new{
 
 tosx_Rig3 = tosx_Rig2:new{
 	Name = "War Rig Mk.III",
-	Armored = true,
 	Health = 3,
 	Image = "tosx_rig3",
 	SkillList = { "tosx_Rig3_Weapon" },
