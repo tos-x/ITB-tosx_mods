@@ -129,14 +129,27 @@ return {
 		"I had already begun filing paperwork pertaining to that Pod's arrival... now I will have to append form 18R-1 for its destruction.",
 		"All cargo is precious. Especially that which comes from the future, unbidden. But we must press on.",
 	},
-	--Secret_DeviceSeen_Mountain = {},
-	--Secret_DeviceSeen_Ice = {},
+	Secret_DeviceSeen_Mountain = {
+		"An undocumented signal is emanating from that mountain, commander. Ascertain who's broadcasting without clearance.",
+	},
+	Secret_DeviceSeen_Ice = {
+		"An undocumented signal is emanating from that ice, commander. Ascertain who's broadcasting without clearance.",
+	},
 	--Secret_DeviceUsed = {},
-	--Secret_Arriving = {},
-	--Emerge_Detected = {},
-	--Emerge_Success = {},
+	Secret_Arriving = {
+		"An unauthorized craft has entered this sector! Its trajectory looks highly unusual, like it originated from... deep space.",
+	},
+	Emerge_Detected = {
+		"Readings indicate Vek reinforcements are on the way.",
+        "Where is the form for logging incoming threats? Ah, here it is.",
+	},
+	Emerge_Success = {
+		"Updating the threat count in your mission log to include these recent arrivals.",
+	},
 	--Emerge_FailedMech = {},
-	--Emerge_FailedVek = {},
+	Emerge_FailedVek = {
+		"Strange that the Vek should impede each other so. I will record this event in our logs.",
+	},
 
 	-- Mech State
 	--Mech_LowHealth = {},
@@ -144,7 +157,9 @@ return {
 	--Mech_Shielded = {},
 	--Mech_Repaired = {},
 	--Pilot_Level_Self = {},
-	--Pilot_Level_Obs = {},
+	Pilot_Level_Obs = {
+		"Outstanding performance today, Pilot #main_second. I have filed a formal commendation.",
+	},
 	--Mech_ShieldDown = {},
 
 	-- Damage Done

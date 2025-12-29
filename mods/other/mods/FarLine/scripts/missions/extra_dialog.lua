@@ -120,10 +120,10 @@ return {
 			"Update: Ship unit destroyed",
 		},
 		Mission_tosx_SpillwayOpen = {
-			"Warning: Floodwaters diverted to this location.",
+			"Warning: Floodwaters diverted to this location",
 		},
 		Mission_tosx_OceanStart = {
-			"Observation: Ground combat currently untenable.",
+			"Observation: Ground combat currently untenable",
 		},
 	},
 

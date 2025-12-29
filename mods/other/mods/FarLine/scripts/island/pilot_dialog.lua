@@ -727,4 +727,43 @@ return {
 		"That takes care of the train.",
 		"Jansson won't be thrilled to have one of her cargo trains destroyed, but I suppose it's better than having it derail in a city.",
 	},
+    
+-- Vertex barks
+    Mission_tosx_Scoutship_Destroyed = {
+		"We're going to have some paperwork to fill out after this mission, explaining how we lost an airship...",
+		"That's going to impact our mission performance...",
+		"This island is going to suffer without that airship scouting for Vek...",
+    },
+    Mission_tosx_Beamtank_Destroyed = {
+		"We're going to have some paperwork to fill out after this mission, explaining how we lost a tank...",
+		"That's going to impact our mission performance...",
+		"This island is going to suffer without that tank clearing away these crystals...",
+    },
+    Mission_tosx_Phoenix_Destroyed = {
+		"We're going to have some paperwork to fill out after this mission, explaining how we lost that facility...",
+		"That's going to impact our mission performance...",
+		"No second chances not that we've lost that facility...",
+    },
+    Mission_tosx_Exosuit_Destroyed = {
+		"We're going to have some paperwork to fill out after this mission, explaining how we lost an exosuit...",
+		"That's going to impact our mission performance...",
+		"Protecting that exosuit was a precondition to evacuating it...",
+    },
+    Mission_tosx_Retracter_Destroyed = {
+		"We're going to have some paperwork to fill out after this mission, explaining how we lost a transmitter...",
+		"That's going to impact our mission performance...",
+		"The Grid is going to suffer without that transmitter...",
+    },
+    Mission_tosx_Halcyte_Destroyed = {
+        "I hope there's no additional paperwork for shattering these.",
+    },
+    Mission_tosx_Retracting = {
+        "Manual retraction commencing.",
+    },
+    Mission_tosx_MeltingDown = {
+        "There's no way that reactor was built to code. Can someone pull the construction records?",
+    },
+    Mission_tosx_CrysGrowth = {
+        "Readings indicate that subsurface crystal activity is increasing.",
+    },
 }
