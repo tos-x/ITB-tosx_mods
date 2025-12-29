@@ -278,8 +278,8 @@ return {
 		"That structure just went down.",
     },
     Mission_tosx_Halcyte_Destroyed = {
-        "Crystal destroyed."
-        "Not as challenging as hunting monsters or machines."
+        "Crystal destroyed.",
+        "Not as challenging as hunting monsters or machines.",
     },
     Mission_tosx_Retracting = {
         "That should do it. The tower is headed underground.",
