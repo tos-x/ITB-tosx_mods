@@ -70,8 +70,6 @@ function tosx_env_healrain:ApplyEffect()
 end
 
 function tosx_env_healrain:SelectSpaces()
-	LOG("a --")
-
 	if self.Options == nil or #self.Options == 0 then
 		self.Options = { Point(3,2), Point(3,5), Point(2,3), Point(5,3)}
 	end
