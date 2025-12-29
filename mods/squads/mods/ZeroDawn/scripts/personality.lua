@@ -255,4 +255,40 @@ return {
 	Mission_tosx_OceanStart = {
 		"Well, this is a new way to fight. I hope my machine can handle it.",
 	},
+    
+    --Vertex
+    Mission_tosx_Scoutship_Destroyed = {
+		"Our flying friend didn't make it.",
+		"That machine just went down.",
+    },
+    Mission_tosx_Beamtank_Destroyed = {
+		"Our crystal-breaker didn't make it.",
+		"That machine just went down.",
+    },
+    Mission_tosx_Phoenix_Destroyed = {
+		"That mechanical altar didn't make it.",
+		"That structure just went down.",
+    },
+    Mission_tosx_Exosuit_Destroyed = {
+		"Our little friend didn't make it.",
+		"That machine just went down.",
+    },
+    Mission_tosx_Retracter_Destroyed = {
+		"That energy tower didn't make it.",
+		"That structure just went down.",
+    },
+    Mission_tosx_Halcyte_Destroyed = {
+        "Crystal destroyed."
+        "Not as challenging as hunting monsters or machines."
+    },
+    Mission_tosx_Retracting = {
+        "That should do it. The tower is headed underground.",
+    },
+    Mission_tosx_MeltingDown = {
+        "Better take out the structure, quickly.",
+        "Those explosions are getting stronger.",
+    },
+    Mission_tosx_CrysGrowth = {
+        "We'll have to maneuver carefully around these crystals.",
+    },
 }
