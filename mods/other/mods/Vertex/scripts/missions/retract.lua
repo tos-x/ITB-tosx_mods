@@ -66,7 +66,7 @@ function Mission_tosx_Retract:UpdateObjectives()
         Game:AddObjective("Retract both Antennas",OBJ_FAILED)
     else
         local status = self.Retracted == 2 and OBJ_COMPLETE or OBJ_STANDARD
-        Game:AddObjective("Retract both Antennas\n("..self.Retracted.."/2 evacuated)",status)
+        Game:AddObjective("Retract both Antennas\n("..self.Retracted.."/2 retracted)",status)
     end
 end
 
