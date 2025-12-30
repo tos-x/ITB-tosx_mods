@@ -71,7 +71,6 @@ function Mission_tosx_HealCrystal:CanKill()
 end
 
 function Mission_tosx_HealCrystal:UpdateObjectives()
-LOG("updateObj")--!!!
     if not Board:IsPawnAlive(self.CrsytalId) then
         self.HealAlive = false
     end
