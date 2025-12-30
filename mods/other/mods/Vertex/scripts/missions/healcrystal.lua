@@ -37,6 +37,7 @@ Mission_tosx_HealCrystal = Mission_Infinite:new{
 	CrystalPawn = "tosx_HealCrystal",
 	Environment = "tosx_env_healcrystal",
     HealKill = false,
+    HealAlive = true,
 	BlockedUnits = {"Jelly_Regen"},
 }
 
@@ -61,7 +62,7 @@ function Mission_tosx_HealCrystal:StartMission()
 end
 
 function Mission_tosx_HealCrystal:CanKill()
-    if not Board:IsPawnAlive(self.CrsytalId) and not self.HealKill then
+    if (not self.HealAlive) and (not self.HealKill) then
         return 0
     elseif self.HealKill then
         return 2
@@ -70,7 +71,11 @@ function Mission_tosx_HealCrystal:CanKill()
 end
 
 function Mission_tosx_HealCrystal:UpdateObjectives()
-	local status = Board:IsPawnAlive(self.CrsytalId) and OBJ_STANDARD or OBJ_COMPLETE
+LOG("updateObj")--!!!
+    if not Board:IsPawnAlive(self.CrsytalId) then
+        self.HealAlive = false
+    end
+	local status = self.HealAlive and OBJ_STANDARD or OBJ_COMPLETE
 	Game:AddObjective("Destroy the Blood Halcyte",status)
     
 	objInMission2:case(self:CanKill())
@@ -224,7 +229,7 @@ a.tosx_explocrysmain3 = a.ExploArt1:new{
     
 local function onPawnKilled(mission, pawn)
     if not mission or mission.ID ~= "Mission_tosx_HealCrystal" then return end
-	if pawn:IsEnemy() and Board:IsPawnAlive(mission.CrsytalId) then
+	if pawn:IsEnemy() and mission.HealAlive then
 		mission.HealKill = true
 	end
 end
