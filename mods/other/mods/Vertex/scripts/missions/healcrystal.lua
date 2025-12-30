@@ -17,8 +17,8 @@ local objInMission2 = switch{
 }
 
 local objAfterMission1 = switch{
-	[0] = function() return Objective("Destroy the Blood Halcyte", 1) end,
-	[1] = function() return Objective("Destroy the Blood Halcyte", 1):Failed() end,
+	[0] = function() return Objective("Destroy the Blood Halcyte", 1):Failed() end,
+	[1] = function() return Objective("Destroy the Blood Halcyte", 1) end,
 	default = function() return nil end,
 }
 
@@ -30,7 +30,7 @@ local objAfterMission2 = switch{
 
 Mission_tosx_HealCrystal = Mission_Infinite:new{
 	Name = "Blood Halcyte",
-	Objectives = {objAfterMission1:case(0),objAfterMission2:case(1)},
+	Objectives = {objAfterMission1:case(1),objAfterMission2:case(1)},
 	MapTags = {"tosx_crystal" , "mountain", "generic"},
 	UseBonus = false,
 	CrsytalId = -1,
