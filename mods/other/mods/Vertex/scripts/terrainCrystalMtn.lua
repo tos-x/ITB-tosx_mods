@@ -1,4 +1,4 @@
--- local VERSION = "0.0.1"
+-- local VERSION = "0.0.2"
 
 -- This code populates missions with cracked mountain tiles, based on tileset chance
 -- It also makes destroyed mountains explode for 1 damage to non-buildings
@@ -293,6 +293,7 @@ end
 local trackedMtns = {}
 
 local function onMountainRemoved(point)
+	if modApi:getCurrentTileset() ~= "Vertex" then return end
 	trackedMtns[p2idx(point)] = point
 end
 
@@ -301,6 +302,8 @@ local function ResetCrystals()
 end
 
 local function CrystalExplode()
+	if modApi:getCurrentTileset() ~= "Vertex" then return end
+    
     local Id, loc = next(trackedMtns)          --Get the first tracked dead mtn
     if Id then                                  --If the entry exists
         local effect = SkillEffect()
@@ -382,6 +385,11 @@ local function onModsLoaded()
 	modApi:addPreMissionAvailableHook(PreMission)
     modApi:addPreLoadGameHook(ResetCrystals)
     sdlext.addGameExitedHook(ResetCrystals)
+	modApi:addMissionEndHook(ResetCrystals)
+	modApi:addMissionStartHook(ResetCrystals)
+	modApi:addMissionNextPhaseCreatedHook(ResetCrystals)
+	modApi:addTestMechEnteredHook(ResetCrystals)
+	modApi:addTestMechExitedHook(ResetCrystals)
     
     modApi:addMissionUpdateHook(function(mission)
         if Board:GetBusyState() == 0 then   --Wait for the board to unbusy
@@ -389,6 +397,7 @@ local function onModsLoaded()
         end
     end)
 	
+    
 	modapiext:addSkillBuildHook(onSkillEffect)
 	modapiext:addFinalEffectBuildHook(onSkillEffect2)
 	modapiext:addTileHighlightedHook(onTileHighlighted)
