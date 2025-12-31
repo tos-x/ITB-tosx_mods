@@ -1,4 +1,4 @@
-
+-- mission Mission_tosx_Lighthouse
 local mod = modApi:getCurrentMod()
 local path = mod.scriptPath
 local switch = require(path .."libs/switch")
@@ -42,6 +42,7 @@ Mission_tosx_Lighthouse = Mission_Infinite:new{
 	Criticals = nil,
 	SpawnStartMod = 1,
 	UseBonus = false,
+    StartingSmoke = nil,
 }
 
 -- Add CEO dialog
@@ -63,6 +64,9 @@ function Mission_tosx_Lighthouse:StartMission()
 	self.Criticals[1] = lighthouse:GetId()
 	Board:SetTerrain(choice, TERRAIN_ROAD)
 	Board:AddPawn(lighthouse, choice)
+    
+	self.StartingSmoke = {}
+    self:waterSmoke()
 end
 
 function Mission_tosx_Lighthouse:waterSmoke()
@@ -72,9 +76,24 @@ function Mission_tosx_Lighthouse:waterSmoke()
 			local p = Point(i,j)
 			if Board:IsSmoke(p) and Board:GetTerrain(p) == TERRAIN_WATER then
 				count = count + 1
+                if not self.Counted then
+                    -- This would block deployment; harmless since water tiles shouldn't spawn
+                    --Board:BlockSpawn(p, BLOCKED_PERM)
+                    
+                    -- First time, record starting smoke tiles
+                    self.StartingSmoke[p2idx(p)] = true
+                end
 			end
+            if Game:GetTurnCount() < 1 and self.StartingSmoke[p2idx(p)] and self.Counted then
+                -- During deployment, replace smoke lost to mech placement effects, just in case
+                if not (Board:IsPawnSpace(p) and Board:GetPawn(p):IsMech()) then
+                    Board:SetSmoke(p, true, true)
+                end
+            end
 		end
 	end
+    
+    self.Counted = true
 	return count
 end
 
