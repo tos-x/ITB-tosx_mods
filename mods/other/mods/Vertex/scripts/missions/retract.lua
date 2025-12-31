@@ -248,6 +248,44 @@ local function onSkillStart(mission, pawn, weaponId, p1, p2)
 	end
 end
 
+local function onMissionUpdate(mission)
+    if Board:GetBusyState() == 0 then   --Wait for the board to unbusy
+        if not mission or mission.ID ~= "Mission_tosx_Retract" then return end
+        for i = 1,2 do
+            if mission.aMoveCount and mission.aMoveCount[i] ~= -1 then
+                --already retracting, do nothing
+            else
+                if Board:IsPawnAlive(mission.Criticals[i]) then
+                    local p0 = Board:GetPawnSpace(mission.Criticals[i])
+                    if Board:IsValid(p0) then
+                        for dir = DIR_START, DIR_END do
+                            local p = p0 + DIR_VECTORS[dir]
+                            if Board:IsPawnSpace(p) and Board:GetPawn(p):GetTeam() == TEAM_PLAYER then
+                                local fx = SkillEffect()
+                                fx:AddScript("Board:GetPawn("..p0:GetString().."):FireWeapon("..p0:GetString()..",1)")
+                                fx:AddSound("/ui/map/flyin_rewards");
+                                fx:AddScript("Board:Ping("..p0:GetString()..", GL_Color(255, 255, 255))")
+                                
+                                local chance = math.random()
+                                if chance > 0.2 and Game:GetTurnCount() > 0 and rtimer == 0 then
+                                    local cast = Board:GetPawn(p):GetId()
+                                    fx:AddVoice("Mission_tosx_Retracting", cast)
+                                    rtimer = 500
+                                end
+                                
+                                Board:AddEffect(fx)
+                                mission.aMoveCount = mission.aMoveCount or {}
+                                mission.aMoveCount[i] = -2
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+
+modApi.events.onMissionUpdate:subscribe(onMissionUpdate)
 modApi.events.onMissionStart:subscribe(resetMove)
 modApi.events.onNextTurn:subscribe(resetMove)
 modapiext.events.onPawnUndoMove:subscribe(onPawnUndoMove)
