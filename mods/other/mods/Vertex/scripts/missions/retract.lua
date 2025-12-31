@@ -128,6 +128,19 @@ function tosx_Retracter:GetTargetArea(p1)
             ret:push_back(p1)
             break
         end
+        -- Allow it to retract if a player pawn has activated but then left
+        if not Board:IsTipImage() then
+            local mission = GetCurrentMission()
+            if mission and mission.aMoveCount then
+                for i = 1,2 do
+                    if mission.Criticals[i] == Board:GetPawn(p1):GetId() then
+                        if mission.aMoveCount[i] ~= -1 then
+                            ret:push_back(p1)
+                        end
+                    end
+                end
+            end
+        end
     end
 	return ret
 end
