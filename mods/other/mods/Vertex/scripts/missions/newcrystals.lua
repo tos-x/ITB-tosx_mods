@@ -82,7 +82,10 @@ function tosx_env_newcrystals:GetAttackEffect(location)
 end
 
 local function goodspot(point)
-    return Board:GetTerrain(point) == TERRAIN_ROAD or
+    return Board:IsValid(point) and
+           (not Board:IsItem(point)) and
+           (not Board:IsBuilding(point)) and
+           Board:GetTerrain(point) == TERRAIN_ROAD or
            Board:GetTerrain(point) == TERRAIN_FOREST or
            Board:GetTerrain(point) == TERRAIN_SAND
 end
@@ -95,18 +98,25 @@ function tosx_env_newcrystals:SelectSpaces()
 	
 	for i,options in pairs(quarters) do
 		local curr = Point(-1,-1)
-		while #options > 0 and (not Board:IsValid(curr) or Board:IsBuilding(curr) or not goodspot(curr)) do
+		while #options > 0 and not goodspot(curr) do
+            -- Pick again
 			curr = random_removal(options)
 		end
-		mines[#mines+1] = curr
-	end	
+        if goodspot(curr) then
+            mines[#mines+1] = curr
+        end
+	end
 	for i = 1, 2 do
-		ret[#ret+1] = random_removal(mines)
+        if #mines > 0 then
+            ret[#ret+1] = random_removal(mines)
+        else
+            break
+        end
 	end
     
 	local effect = SkillEffect()
 	local chance = math.random()
-	if chance > 0.2 and Game:GetTurnCount() > 0 then
+	if chance > 0.2 and Game:GetTurnCount() > 0 and #ret > 0 then
 		effect:AddVoice("Mission_tosx_CrysGrowth", -1)
 	end
 	Board:AddEffect(effect)	
