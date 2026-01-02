@@ -47,6 +47,7 @@ function Mission_tosx_Retract:StartMission()
 	self.Criticals[1] = tower:GetId()
 	Board:AddPawn(tower, choice)
     Board:SetCustomTile(choice,"tosx_towersite.png")
+    Board:BlockSpawn(choice, BLOCKED_PERM)
     
 	choice = random_removal(zone)
 	Board:ClearSpace(choice)    
@@ -54,6 +55,7 @@ function Mission_tosx_Retract:StartMission()
 	self.Criticals[2] = tower2:GetId()
 	Board:AddPawn(tower2, choice)
     Board:SetCustomTile(choice,"tosx_towersite.png")
+    Board:BlockSpawn(choice, BLOCKED_PERM)
 end
 
 local rtimer = 0
@@ -129,12 +131,12 @@ function tosx_Retracter:GetTargetArea(p1)
             break
         end
         -- Allow it to retract if a player pawn has activated but then left
-        if not Board:IsTipImage() then
+        if not Board:IsTipImage() and Game:GetTurnCount() > 0 then
             local mission = GetCurrentMission()
             if mission and mission.aMoveCount then
                 for i = 1,2 do
                     if mission.Criticals[i] == Board:GetPawn(p1):GetId() then
-                        if mission.aMoveCount[i] ~= -1 then
+                        if mission.aMoveCount[i] > -2 then
                             ret:push_back(p1)
                         end
                     end
@@ -145,7 +147,7 @@ function tosx_Retracter:GetTargetArea(p1)
 	return ret
 end
 
-function tosx_Retracter:GetSkillEffect(p1, p2)    
+function tosx_Retracter:GetSkillEffect(p1, p2)
 	local ret = SkillEffect()
     local ismech = false
     
@@ -208,8 +210,8 @@ local function resetMove(mission)
 	if not mission or mission.ID ~= "Mission_tosx_Retract" then return end
     mission.pMoveCount = 0
     mission.aMoveCount = {}
-    mission.aMoveCount[1] = -1
-    mission.aMoveCount[2] = -1
+    mission.aMoveCount[1] = -2
+    mission.aMoveCount[2] = -2
 end
 	
 local function onPawnUndoMove(mission, pawn, oldPosition)
@@ -220,7 +222,7 @@ local function onPawnUndoMove(mission, pawn, oldPosition)
             Board:GetPawn(mission.Criticals[i]):ClearQueued()
             Game:TriggerSound("/ui/battle/power_down")
             Board:Ping(Board:GetPawnSpace(mission.Criticals[i]), GL_Color(255, 255, 255))
-            mission.aMoveCount[i] = -1
+            mission.aMoveCount[i] = -2
         end
     end
     mission.pMoveCount = mission.pMoveCount - 1
@@ -228,6 +230,7 @@ end
 
 local function onSkillStart(mission, pawn, weaponId, p1, p2)
 	if not mission or mission.ID ~= "Mission_tosx_Retract" then return end
+    if Game:GetTurnCount() < 1 then return end
     if not pawn or pawn:GetTeam() ~= TEAM_PLAYER then return end
     if not mission.aMoveCount then resetMove(mission) end
     
@@ -239,13 +242,13 @@ local function onSkillStart(mission, pawn, weaponId, p1, p2)
             local p = p2 + DIR_VECTORS[dir]
             if Board:IsPawnSpace(p) then
                 for i = 1,2 do
-                    if Board:GetPawn(p):GetId() == mission.Criticals[i] and mission.aMoveCount[i] == -1 then
+                    if Board:GetPawn(p):GetId() == mission.Criticals[i] and mission.aMoveCount[i] == -2 then
                         mission.aMoveCount[i] = mission.pMoveCount
                         local fx = SkillEffect()
                         fx:AddScript("Board:GetPawn("..p:GetString().."):FireWeapon("..p:GetString()..",1)")
                         fx:AddSound("/ui/map/flyin_rewards");
                         fx:AddScript("Board:Ping("..p:GetString()..", GL_Color(255, 255, 255))")
-                        
+
                         local chance = math.random()
                         if chance > 0.2 and Game:GetTurnCount() > 0 and rtimer == 0 then
                             local cast = pawn:GetId()
@@ -262,10 +265,11 @@ local function onSkillStart(mission, pawn, weaponId, p1, p2)
 end
 
 local function onMissionUpdate(mission)
+    if not mission or mission.ID ~= "Mission_tosx_Retract" then return end
+    if Game:GetTurnCount() < 1 then return end
     if Board:GetBusyState() == 0 then   --Wait for the board to unbusy
-        if not mission or mission.ID ~= "Mission_tosx_Retract" then return end
         for i = 1,2 do
-            if mission.aMoveCount and mission.aMoveCount[i] ~= -1 then
+            if mission.aMoveCount and mission.aMoveCount[i] > -2 then
                 --already retracting, do nothing
             else
                 if Board:IsPawnAlive(mission.Criticals[i]) then
@@ -273,7 +277,9 @@ local function onMissionUpdate(mission)
                     if Board:IsValid(p0) then
                         for dir = DIR_START, DIR_END do
                             local p = p0 + DIR_VECTORS[dir]
-                            if Board:IsPawnSpace(p) and Board:GetPawn(p):GetTeam() == TEAM_PLAYER then
+                            if Board:IsPawnSpace(p) and
+                               Board:GetPawn(p):GetTeam() == TEAM_PLAYER and
+                               Board:GetPawn(p):GetType() ~= "tosx_RetractTower" then
                                 local fx = SkillEffect()
                                 fx:AddScript("Board:GetPawn("..p0:GetString().."):FireWeapon("..p0:GetString()..",1)")
                                 fx:AddSound("/ui/map/flyin_rewards");
@@ -288,7 +294,7 @@ local function onMissionUpdate(mission)
                                 
                                 Board:AddEffect(fx)
                                 mission.aMoveCount = mission.aMoveCount or {}
-                                mission.aMoveCount[i] = -2
+                                mission.aMoveCount[i] = -1
                             end
                         end
                     end
