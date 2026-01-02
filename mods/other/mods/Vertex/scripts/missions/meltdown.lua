@@ -97,7 +97,6 @@ function tosx_ReactorExplode:GetTargetArea(p1)
 end
 
 function tosx_NukeGrayDialog(point)
-LOG("nuke")
 	local effect = SkillEffect()
     effect:AddScript([[
         SuppressDialog(1200,"Death_Revived")
