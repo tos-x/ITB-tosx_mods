@@ -45,7 +45,7 @@ tosx_Warp3Mech = Pawn:new{
 }
 
 local tosx_NomadMove = function(mission, pawn, weaponId, p1, p2)
-    if pawn:GetType() == "tosx_Warp3Mech" and weaponId == "Move" then
+    if pawn and pawn:GetType() == "tosx_Warp3Mech" and weaponId == "Move" then
         Game:TriggerSound("/enemy/moth_1/attack_launch")
     end
 end
