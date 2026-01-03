@@ -106,13 +106,14 @@ tosx_ScoutAirship = Pawn:new{
 
 tosx_Scoutship_Move = Skill:new{
 	Name = "Scout Ahead!",
-	Description = "Leap forward to the next empty tile.",
+	Description = "Leap forward 2 spaces, but will be destroyed if final tile is blocked.",
 	Class = "Enemy",
 	LaunchSound = "/weapons/bomb_strafe",
 	ImpactSound = "/impact/generic/mech",
 	TipImage = {
 		Unit = Point(2,1),
 		Enemy = Point(2,2),
+		Enemy2 = Point(2,3),
 		Target = Point(2,3),
 		CustomPawn = "tosx_ScoutAirship",
 	}
