@@ -30,7 +30,7 @@ tosx_meltdown4 = {["version"] = 7, ["dimensions"] = Point( 8, 8 ), ["name"] = "t
 ["spawns"] = {},
 ["spawn_ids"] = {},
 ["spawn_points"] = {},
-["zones"] = {["reactor"] = {Point( 5, 5 ), Point( 5, 4 ), Point( 3, 2 ), Point( 2, 1 ), },
+["zones"] = {["reactor"] = {Point( 5, 5 ), Point( 5, 4 ), Point( 3, 2 ), Point( 2, 2 ), },
 },
 ["tags"] = {"tosx_crystal", "tosx_meltdown", },
 ["blocked_points"] = {},
