@@ -156,6 +156,7 @@ function tosx_PhoenixRevive:GetSkillEffect(p1, p2)
     
     local revive = SpaceDamage(p2,-10)
     revive.bHide = true
+    revive.iFire = EFFECT_REMOVE
     revive.sScript = "Board:GetPawn("..p2:GetString().."):SetBoosted(true)"
     ret:AddDamage(revive)
     
