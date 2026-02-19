@@ -26,6 +26,14 @@ local this = {
 		BONUS_DEBRIS,
 		BONUS_SELFDAMAGE,
 		},
+	bonusNoKill = {
+		BONUS_GRID,
+		BONUS_MECHS,
+		BONUS_BLOCK,
+		BONUS_DEBRIS,
+		BONUS_SELFDAMAGE,
+		BONUS_PACIFIST,
+		},
 	bonusNoBlock = { 
 		BONUS_GRID,
 		BONUS_MECHS,
