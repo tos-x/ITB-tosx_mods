@@ -24,7 +24,7 @@ setmetatable(BoardProxy, {
 	end
 })
 
-local VERSION = "0.5.2"
+local VERSION = "0.5.3"
 local EVENTS = {
 	"onAcidCreated",
 	"onAcidRemoved",
@@ -69,6 +69,7 @@ end
 
 local function initTrackedTiles()
 	local trackedTiles = {}
+
 	for index, point in ipairs(Board) do
 		local trackedTile = {}
 		trackedTiles[index] = trackedTile
@@ -96,7 +97,8 @@ local function initTrackedTiles()
 	return trackedTiles
 end
 
-local function updateTheBoard(self)
+local function updateBoard(self)
+
 	local trackedTiles = self.trackedTiles
 
 	if trackedTiles == nil then
@@ -314,8 +316,7 @@ local function initEvents()
 end
 
 local function finalizeInit(self)
-	modApi.events.onMissionUpdate:subscribe(updateTheBoard)
-	-- modApi.events.onMissionNextPhaseCreated:subscribe(clearTrackedTiles)
+	modApi.events.onMissionUpdate:subscribe(updateBoard)
 	modApi.events.onTestMechEntered:subscribe(clearTrackedTiles)
 end
 
