@@ -375,7 +375,11 @@ tosx_WhirlpoolOff = function(point) -- Function name must match the terraintile.
 	-- After a skill/queued skill is used on Whirlpools, remove them!
 	Board:AddAnimation(point,"tosx_dissipate_anim",ANIM_NO_DELAY)
 	Board:AddAnimation(point,"Splash",ANIM_NO_DELAY)
+    
+    onTileUnhighlighted(GetCurrentMission(), point)
 	Board:SetCustomTile(point,"")
+    onTileHighlighted(GetCurrentMission(), point)
+    
 	Board:SetTerrainIcon(point,"")
 end
 

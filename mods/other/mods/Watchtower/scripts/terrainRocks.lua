@@ -356,7 +356,11 @@ end
 tosx_RocksCrumble = function(point) -- Function name must match the terraintile.DamageFunction string
 	-- After a skill/queued skill is used from rocks, crumble them!
 	Board:AddAnimation(point,"tosx_crumble_anim",ANIM_NO_DELAY)
+    
+    onTileUnhighlighted(GetCurrentMission(), point)
 	Board:SetCustomTile(point,"")
+    onTileHighlighted(GetCurrentMission(), point)
+    
 	Board:SetTerrainIcon(point,"")
 end
 
