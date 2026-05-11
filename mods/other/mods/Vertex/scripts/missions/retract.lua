@@ -181,7 +181,7 @@ function tosx_Retracter:GetTargetScore(p1,p2)
 	return 10
 end
 
-modApi:appendAsset("img/units/mission/tosx_phoenix.png", mod.resourcePath .."img/units/mission/retracter.png")
+modApi:appendAsset("img/units/mission/tosx_retracter.png", mod.resourcePath .."img/units/mission/retracter.png")
 modApi:appendAsset("img/units/mission/tosx_retracter_ns.png", mod.resourcePath .."img/units/mission/retracter_ns.png")
 modApi:appendAsset("img/units/mission/tosx_retracter_a.png", mod.resourcePath .."img/units/mission/retracter_a.png")
 modApi:appendAsset("img/units/mission/tosx_retracter_d.png", mod.resourcePath .."img/units/mission/retracter_d.png")
